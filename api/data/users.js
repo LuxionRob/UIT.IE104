@@ -6,7 +6,7 @@ module.exports = [
     phoneNumber: '0922338756',
     gender: 'female',
     email: 'nikalinhlan@nijigen.com',
-    aveUrl: '../images/avatar/lando.png',
+    aveUrl: '../images/avatar/Nika_Linh_Lan.png',
     username: 'nikalinhlanvjppro123',
     password: '123456789',
   },

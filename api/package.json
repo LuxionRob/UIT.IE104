@@ -6,11 +6,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
-    "@faker-js/faker": "^7.6.0",
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "start": "node randomSeeder.js && nodemon server.js"
+    "start": "npm run generate-code && nodemon server.js",
+    "generate-code": "node randomSeeder.js"
   },
   "keywords": [],
   "author": "",

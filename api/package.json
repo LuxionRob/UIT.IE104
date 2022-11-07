@@ -9,7 +9,7 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "start": "json-server --watch db.json"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

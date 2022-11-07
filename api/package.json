@@ -9,7 +9,7 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "start": "npm install -g json-server"
+    "start": "json-server --watch db.json"
   },
   "keywords": [],
   "author": "",

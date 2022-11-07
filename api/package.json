@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "npm run generate-code && nodemon server.js",
-    "generate-code": "node randomSeeder.js"
+    "generate-code": "node seeder.js"
   },
   "keywords": [],
   "author": "",

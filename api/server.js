@@ -1,11 +1,16 @@
 // server.js
 const path = require('path')
 const jsonServer = require('json-server')
+const express = require('express')
+
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
 server.use(middlewares)
 
+server.get('/api/images/:userId', function (req, res) {
+  res.sendFile(path.join(__dirname, `../api/images/avatar/${req.params.userId}.webp`));
+});
 // Add custom routes before JSON Server router
 server.get('/echo', (req, res) => {
   res.jsonp(req.query)

@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = [
   {
     userId: 1,
@@ -6,7 +8,7 @@ module.exports = [
     phoneNumber: '0922338756',
     gender: 'female',
     email: 'nikalinhlan@nijigen.com',
-    aveUrl: '../images/avatar/Nika_Linh_Lan.png',
+    aveUrl: '/api/images/1',
     username: 'nikalinhlanvjppro123',
     password: '123456789',
   },

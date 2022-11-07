@@ -10,7 +10,7 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node randomSeeder.js && nodemon server.js"
   },
   "keywords": [],
   "author": "",

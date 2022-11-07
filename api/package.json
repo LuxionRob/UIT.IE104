@@ -6,6 +6,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "nodemon": "^2.0.20"
   },
   "scripts": {

@@ -4,14 +4,14 @@ const userList = require('./data/user')
 const productList = require('./data/product')
 
 function generateUserList() {
-  userList.forEach((user) => {
+  userList.map((user) => {
     user.createAt = faker.date.past(2)
   })
   return userList
 }
 
 function generateProductList() {
-  productList.forEach((product) => {
+  productList.map((product) => {
     product.createAt = faker.date.past(5)
   })
   return productList

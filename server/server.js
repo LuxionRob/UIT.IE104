@@ -8,9 +8,23 @@ const middlewares = jsonServer.defaults()
 server.use(middlewares)
 
 // Add custom routes before JSON Server router
-server.get('/echo', (req, res) => {
-  res.jsonp(req.query)
-})
+router.render = (req, res) => {
+  const headers = res.getHeaders()
+  const totalCount = headers['x-total-count']
+  if (req.originalMethod === 'GET' && totalCount) {
+    const queryParams = queryString.parse(req._parsedOriginalUrl.query)
+    const result = {
+      data: res.locals.data,
+      pagination: {
+        _page: Number.parseInt(queryParams._page) || 1,
+        _limit: Number.parseInt(queryParams._limit) || 10,
+        _totalRows: Number.parseInt(totalCount),
+      },
+    }
+    return res.jsonp(result)
+  }
+  res.jsonp(res.locals.data)
+}
 
 // To handle POST, PUT and PATCH you need to use a body-parser
 // You can use the one used by JSON Server

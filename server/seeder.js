@@ -1,7 +1,7 @@
 const fs = require('fs')
 const { faker } = require('@faker-js/faker')
 const userList = require('./data/users')
-const productList = require('./data/product')
+const productList = require('./data/products')
 
 function generateUserList() {
   userList.map((user) => {

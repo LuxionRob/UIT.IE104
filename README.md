@@ -30,13 +30,13 @@ Open another terminal
 cd ../server && npm run dev
 ```
 
-### Build
+### Build:
 At root folder
 ```
 cd server && npm run build
 ```
 
-### Workflow
+### Workflow:
 
 Update change from root repo
 ```

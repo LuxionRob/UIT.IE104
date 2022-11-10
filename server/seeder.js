@@ -1,6 +1,6 @@
 const fs = require('fs')
 const { faker } = require('@faker-js/faker')
-const userList = require('./data/user')
+const userList = require('./data/users')
 const productList = require('./data/product')
 
 function generateUserList() {

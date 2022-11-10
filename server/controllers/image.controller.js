@@ -5,9 +5,9 @@ class productController {
     res.sendFile(path.join(process.cwd(), 'images', 'avatars', req.params.id + '.webp'))
   }
   updateUserImage(req, res) {}
-  getAllProductImage(req, res) {}
-  getProductImage(req, res) {}
-  updateProductImage(req, res) {}
+  getProductImage(req, res) {
+    res.sendFile(path.join(process.cwd(), 'images', 'products', req.params.id + '.webp'))
+  }
 }
 
 module.exports = new productController()

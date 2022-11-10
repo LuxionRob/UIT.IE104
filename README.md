@@ -35,3 +35,12 @@ At root folder
 ```
 cd server && npm run build
 ```
+
+### Workflow
+
+Update change from root repo
+```
+git pull cafe master
+```
+
+After pushing into forked repo, create PR (Pull request) and wait for a reviewer <(")

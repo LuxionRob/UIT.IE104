@@ -1,3 +1,7 @@
+import { config } from 'dotenv'
+config()
+const PORT = process.env.MODE === 'dev' ? process.env.DEV_PORT : process.env.PRODUCTION_PORT
+
 module.exports = [
   {
     id: 1,
@@ -5,7 +9,7 @@ module.exports = [
     name: 'Sữa Chua Mận Hạt Sen',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/1',
+    productImage: `http://localhost:${PORT}/api/images/products/1`,
   },
   {
     id: 2,
@@ -13,7 +17,7 @@ module.exports = [
     name: 'Trà Mận Hạt Sen',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/2',
+    productImage: `http://localhost:${PORT}/api/images/products/2`,
   },
   {
     id: 3,
@@ -21,7 +25,7 @@ module.exports = [
     name: 'Ô Long Xoài Kem Cà Phê',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/3',
+    productImage: `http://localhost:${PORT}/api/images/products/3`,
   },
   {
     id: 4,
@@ -29,7 +33,7 @@ module.exports = [
     name: 'Trà Đào Bưởi Hồng Trân Châu Baby',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/4',
+    productImage: `http://localhost:${PORT}/api/images/products/4`,
   },
   {
     id: 5,
@@ -37,7 +41,7 @@ module.exports = [
     name: 'Instant Milk Tea - Strawberry - Set 6 Ly',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/5',
+    productImage: `http://localhost:${PORT}/api/images/products/5`,
   },
   {
     id: 6,
@@ -45,7 +49,7 @@ module.exports = [
     name: 'Instant Milk Tea - Original - Set 6 ly',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/6',
+    productImage: `http://localhost:${PORT}/api/images/products/6`,
   },
   {
     id: 7,
@@ -53,7 +57,7 @@ module.exports = [
     name: 'Instant Milk Tea - Strawberry',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/7',
+    productImage: `http://localhost:${PORT}/api/images/products/7`,
   },
   {
     id: 8,
@@ -61,7 +65,7 @@ module.exports = [
     name: 'Instant Milk Tea - Original',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/8',
+    productImage: `http://localhost:${PORT}/api/images/products/8`,
   },
   {
     id: 9,
@@ -69,7 +73,7 @@ module.exports = [
     name: 'Trà Xoài Bưởi Hồng',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/9',
+    productImage: `http://localhost:${PORT}/api/images/products/9`,
   },
   {
     id: 10,
@@ -77,7 +81,7 @@ module.exports = [
     name: 'Trà Xoài Bưởi Hồng Kem Phô Mai',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/10',
+    productImage: `http://localhost:${PORT}/api/images/products/10`,
   },
   {
     id: 11,
@@ -85,7 +89,7 @@ module.exports = [
     name: 'Choco Ngũ Cốc Kem Cafe',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/11',
+    productImage: `http://localhost:${PORT}/api/images/products/11`,
   },
   {
     id: 12,
@@ -93,7 +97,7 @@ module.exports = [
     name: 'Hồng Trà Ngũ Cốc Kem Cafe',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/12',
+    productImage: `http://localhost:${PORT}/api/images/products/12`,
   },
   {
     id: 13,
@@ -101,7 +105,7 @@ module.exports = [
     name: 'Royal Pearl Milk Coffee',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/13',
+    productImage: `http://localhost:${PORT}/api/images/products/13`,
   },
   {
     id: 14,
@@ -109,7 +113,7 @@ module.exports = [
     name: 'Grass Jelly Milk Coffee',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/14',
+    productImage: `http://localhost:${PORT}/api/images/products/14`,
   },
   {
     id: 15,
@@ -117,7 +121,7 @@ module.exports = [
     name: 'Tiger Sugar',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/15',
+    productImage: `http://localhost:${PORT}/api/images/products/15`,
   },
   {
     id: 16,
@@ -125,7 +129,7 @@ module.exports = [
     name: 'Trà Sữa Trân Châu Hoàng Gia',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/16',
+    productImage: `http://localhost:${PORT}/api/images/products/16`,
   },
   {
     id: 17,
@@ -133,7 +137,7 @@ module.exports = [
     name: 'Trà Sữa Ba Anh Em',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/17',
+    productImage: `http://localhost:${PORT}/api/images/products/17`,
   },
   {
     id: 18,
@@ -141,7 +145,7 @@ module.exports = [
     name: 'Trà Sữa Panda',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/18',
+    productImage: `http://localhost:${PORT}/api/images/products/18`,
   },
   {
     id: 19,
@@ -149,7 +153,7 @@ module.exports = [
     name: 'Trà Sữa Kim Cương Đen Okinawa',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/19',
+    productImage: `http://localhost:${PORT}/api/images/products/19`,
   },
   {
     id: 20,
@@ -157,7 +161,7 @@ module.exports = [
     name: 'Trà dứa nhiệt đới',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/20',
+    productImage: `http://localhost:${PORT}/api/images/products/20`,
   },
   {
     id: 21,
@@ -165,7 +169,7 @@ module.exports = [
     name: 'Ô Long Kem Phô Mai',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/21',
+    productImage: `http://localhost:${PORT}/api/images/products/21`,
   },
   {
     id: 22,
@@ -173,7 +177,7 @@ module.exports = [
     name: 'Trà Sữa Hạnh Phúc',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/22',
+    productImage: `http://localhost:${PORT}/api/images/products/22`,
   },
   {
     id: 23,
@@ -181,7 +185,7 @@ module.exports = [
     name: 'Sữa Tươi Trân Châu Baby Kem Café',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/23',
+    productImage: `http://localhost:${PORT}/api/images/products/23`,
   },
   {
     id: 24,
@@ -189,7 +193,7 @@ module.exports = [
     name: 'Oolong Trân châu Baby Kem Café',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/24',
+    productImage: `http://localhost:${PORT}/api/images/products/24`,
   },
   {
     id: 25,
@@ -197,7 +201,7 @@ module.exports = [
     name: 'Trà Xanh',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/25',
+    productImage: `http://localhost:${PORT}/api/images/products/25`,
   },
   {
     id: 26,
@@ -205,7 +209,7 @@ module.exports = [
     name: 'Trà Sữa Matcha',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/26',
+    productImage: `http://localhost:${PORT}/api/images/products/26`,
   },
   {
     id: 27,
@@ -213,7 +217,7 @@ module.exports = [
     name: 'Trà Sữa Ô Long',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/27',
+    productImage: `http://localhost:${PORT}/api/images/products/27`,
   },
   {
     id: 28,
@@ -221,7 +225,7 @@ module.exports = [
     name: 'Ô Long Thái Cực',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/28',
+    productImage: `http://localhost:${PORT}/api/images/products/28`,
   },
   {
     id: 29,
@@ -229,7 +233,7 @@ module.exports = [
     name: 'Trà Xanh Sữa Vị Nhài',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/29',
+    productImage: `http://localhost:${PORT}/api/images/products/29`,
   },
   {
     id: 30,
@@ -237,7 +241,7 @@ module.exports = [
     name: 'Hồng Trà',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/30',
+    productImage: `http://localhost:${PORT}/api/images/products/30`,
   },
   {
     id: 31,
@@ -245,7 +249,7 @@ module.exports = [
     name: 'Matcha Đậu Đỏ',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/31',
+    productImage: `http://localhost:${PORT}/api/images/products/31`,
   },
   {
     id: 32,
@@ -253,7 +257,7 @@ module.exports = [
     name: 'Trà Sữa Socola',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/32',
+    productImage: `http://localhost:${PORT}/api/images/products/32`,
   },
   {
     id: 33,
@@ -261,7 +265,7 @@ module.exports = [
     name: 'Trà Sữa Bạc Hà',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/33',
+    productImage: `http://localhost:${PORT}/api/images/products/33`,
   },
   {
     id: 34,
@@ -269,7 +273,7 @@ module.exports = [
     name: 'Trà sữa dâu tây',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/34',
+    productImage: `http://localhost:${PORT}/api/images/products/34`,
   },
   {
     id: 35,
@@ -277,7 +281,7 @@ module.exports = [
     name: 'Trà sữa',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/35',
+    productImage: `http://localhost:${PORT}/api/images/products/35`,
   },
   {
     id: 36,
@@ -285,7 +289,7 @@ module.exports = [
     name: 'Trà Mận Hạt Sen',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/36',
+    productImage: `http://localhost:${PORT}/api/images/products/36`,
   },
   {
     id: 37,
@@ -293,7 +297,7 @@ module.exports = [
     name: 'Ô Long Xoài Kem Cà Phê',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/37',
+    productImage: `http://localhost:${PORT}/api/images/products/37`,
   },
   {
     id: 38,
@@ -301,7 +305,7 @@ module.exports = [
     name: 'Trà Đào Bưởi Hồng Trân Châu Baby',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/38',
+    productImage: `http://localhost:${PORT}/api/images/products/38`,
   },
   {
     id: 39,
@@ -309,7 +313,7 @@ module.exports = [
     name: 'Trà Xoài Bưởi Hồng',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/39',
+    productImage: `http://localhost:${PORT}/api/images/products/39`,
   },
   {
     id: 40,
@@ -317,7 +321,7 @@ module.exports = [
     name: 'Probi Bưởi Trân Châu Sương Mai',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/40',
+    productImage: `http://localhost:${PORT}/api/images/products/40`,
   },
   {
     id: 41,
@@ -325,7 +329,7 @@ module.exports = [
     name: 'Probi Xoài Trân Châu Sương Mai',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/41',
+    productImage: `http://localhost:${PORT}/api/images/products/41`,
   },
   {
     id: 42,
@@ -333,7 +337,7 @@ module.exports = [
     name: 'Trà Xanh Xoài',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/42',
+    productImage: `http://localhost:${PORT}/api/images/products/42`,
   },
   {
     id: 43,
@@ -341,7 +345,7 @@ module.exports = [
     name: 'Trà dâu tằm pha lê tuyết',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/43',
+    productImage: `http://localhost:${PORT}/api/images/products/43`,
   },
   {
     id: 44,
@@ -349,7 +353,7 @@ module.exports = [
     name: 'Hồng Trà Bưởi Mật Ong',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/44',
+    productImage: `http://localhost:${PORT}/api/images/products/44`,
   },
   {
     id: 45,
@@ -357,7 +361,7 @@ module.exports = [
     name: 'Trà Xoài Bưởi Hồng Kem Phô Mai',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/45',
+    productImage: `http://localhost:${PORT}/api/images/products/45`,
   },
   {
     id: 46,
@@ -365,7 +369,7 @@ module.exports = [
     name: 'Choco Ngũ Cốc Kem Cafe',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/46',
+    productImage: `http://localhost:${PORT}/api/images/products/46`,
   },
   {
     id: 47,
@@ -373,7 +377,7 @@ module.exports = [
     name: 'Hồng Trà Ngũ Cốc Kem Cafe',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/47',
+    productImage: `http://localhost:${PORT}/api/images/products/47`,
   },
   {
     id: 48,
@@ -381,7 +385,7 @@ module.exports = [
     name: 'Dâu Tằm Kem Phô Mai',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/48',
+    productImage: `http://localhost:${PORT}/api/images/products/48`,
   },
   {
     id: 49,
@@ -389,7 +393,7 @@ module.exports = [
     name: 'Hồng Trà Kem Phô Mai',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/49',
+    productImage: `http://localhost:${PORT}/api/images/products/49`,
   },
   {
     id: 50,
@@ -397,7 +401,7 @@ module.exports = [
     name: 'Trà Xanh Kem Phô Mai',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/50',
+    productImage: `http://localhost:${PORT}/api/images/products/50`,
   },
   {
     id: 51,
@@ -405,7 +409,7 @@ module.exports = [
     name: 'Matcha Kem Phô Mai',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/51',
+    productImage: `http://localhost:${PORT}/api/images/products/51`,
   },
   {
     id: 52,
@@ -413,7 +417,7 @@ module.exports = [
     name: 'Sữa Chua Mận Hạt Sen',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/52',
+    productImage: `http://localhost:${PORT}/api/images/products/52`,
   },
   {
     id: 53,
@@ -421,7 +425,7 @@ module.exports = [
     name: 'Sữa Chua Dâu Tằm Hoàng Kim',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/53',
+    productImage: `http://localhost:${PORT}/api/images/products/53`,
   },
   {
     id: 54,
@@ -429,7 +433,7 @@ module.exports = [
     name: 'Sữa Chua Dâu Tằm Hạt Dẻ',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/54',
+    productImage: `http://localhost:${PORT}/api/images/products/54`,
   },
   {
     id: 55,
@@ -437,6 +441,6 @@ module.exports = [
     name: 'Sữa Chua Trắng',
     price: '30.000đ',
     discription: 'Trà sữa ngon tuyệt!',
-    productImage: 'http://localhost:3000/api/products/55',
+    productImage: `http://localhost:${PORT}/api/images/products/55`,
   },
 ]

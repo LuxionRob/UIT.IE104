@@ -1,1 +1,1 @@
-export const getUser = () => {}
+import intancs from './init'

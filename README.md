@@ -34,7 +34,7 @@ cd client && npm start
 Open another terminal
 
 ```
-cd ../server && npm run dev
+cd server && npm run dev
 ```
 
 ### Build:

@@ -7,8 +7,15 @@ Please fork repo, ![image](https://user-images.githubusercontent.com/45875394/20
 
 ### Add root repo remote:
 
+With SSH:
 ```
 git remote add cafe git@github.com:LuxionRob/UIT.IE104.git
+git remote set-url --push cafe DISABLE
+```
+
+With HTTPS:
+```
+git remote add cafe https://github.com/LuxionRob/UIT.IE104.git
 git remote set-url --push cafe DISABLE
 ```
 

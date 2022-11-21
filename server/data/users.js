@@ -13,6 +13,7 @@ module.exports = [
     avatarImage: `http://localhost:${PORT}/api/images/users/1`,
     username: 'nikalinhlanvjppro123',
     password: '123456789',
+    role: 'admin',
     cart: [2],
   },
   {
@@ -25,6 +26,7 @@ module.exports = [
     avatarImage: `http://localhost:${PORT}/api/images/users/2`,
     username: 'simpmoiminhem',
     password: '123456789',
+    role: 'user',
     cart: [],
   },
   {
@@ -37,6 +39,7 @@ module.exports = [
     avatarImage: `http://localhost:${PORT}/api/images/users/3`,
     username: 'chuateancap',
     password: '123456789',
+    role: 'user',
     cart: [],
   },
 ]

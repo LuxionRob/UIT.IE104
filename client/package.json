@@ -12,8 +12,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css": "tailwind build -i src/assets/tailwind.css -o src/tailwind.css --watch",
+    "build": "react-scripts build && tailwind build -i src/assets/tailwind.css -o src/tailwind.css",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
   }
 }

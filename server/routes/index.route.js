@@ -1,6 +1,7 @@
 const jsonServer = require('json-server')
 const router = jsonServer.router('db.json')
 const imagesRouter = require('./image.route')
+const authRouter = require('./auth.route')
 
 function routes(server) {
   router.render = (req, res) => {
@@ -22,6 +23,7 @@ function routes(server) {
   }
 
   server.use('/api/images', imagesRouter)
+  server.use('/api/auth', authRouter)
   server.use('/api', router)
 
   server.use('*', function (req, res) {

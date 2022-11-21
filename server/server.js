@@ -12,17 +12,11 @@ server.use(middlewares)
 // To handle POST, PUT and PATCH you need to use a body-parser
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser)
-server.use((req, res, next) => {
-  if (req.method === 'POST') {
-    req.body.createdAt = Date.now()
-  }
-  // Continue to JSON Server router
-  next()
-})
+
 // Config router
 server.use(
   jsonServer.rewriter({
-    '/api/users/:id/avatar': '/$1',
+    '/api/users\\?id=:id': 'api/user/:id',
     '/blog/:resource/:id/show': '/:resource/:id',
   })
 )

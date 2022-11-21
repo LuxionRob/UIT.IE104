@@ -1,5 +1,4 @@
-import { config } from 'dotenv'
-config()
+require('dotenv').config()
 const PORT = process.env.MODE === 'dev' ? process.env.DEV_PORT : process.env.PRODUCTION_PORT
 
 module.exports = [

@@ -1,9 +1,8 @@
 const registerValidator = require('../validations/authorization')
 const loginValidator = require('../validations/authorization')
 const userData = require('../data/users')
-const postData = require('../utils')
 class userController {
-  async register(request, response) {
+  async authSignUp(request, response) {
     const { error } = registerValidator(request.body)
 
     if (error) return response.status(422).send(error.details[0].message)
@@ -26,7 +25,7 @@ class userController {
       response.status(400).send(err)
     }
   }
-  async login(request, response) {
+  async authLogin(request, response) {
     const { error } = loginValidator(request.body)
 
     if (error) return response.status(422).send(error.details[0].message)

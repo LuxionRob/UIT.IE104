@@ -23,7 +23,7 @@ server.use(
 
 // Use default router
 routes(server)
-const PORT = process.env.MODE === 'dev' ? process.env.DEV_PORT : process.env.PRODUCTION_PORT
+const PORT = 3003
 server.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`)
 })

@@ -9,7 +9,7 @@ export const getUser = async () => {
   }
 }
 
-export const authSignUp = async ({ email, password }) => {
+export const authLogin = async ({ email, password }) => {
   try {
     const data = await instance
       .post('/auth/login', {
@@ -23,7 +23,7 @@ export const authSignUp = async ({ email, password }) => {
   }
 }
 
-export const authLogin = async ({ email, password }) => {
+export const authSignUp = async ({ email, password }) => {
   try {
     const data = await instance
       .post('auth/sign-up', {

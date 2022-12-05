@@ -12,7 +12,7 @@
     "react-scripts": "0.9.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"npx tailwind -i src/assets/tailwind.css -o src/tailwind.css -w\"",
     "watch-css": "npx tailwind -i src/assets/tailwind.css -o src/tailwind.css -w",
     "build": "tailwind -i src/assets/tailwind.css -o src/tailwind.css && react-scripts build",
     "test": "react-scripts test --env=jsdom",

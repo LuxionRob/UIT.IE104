@@ -1,14 +1,8 @@
-const registerValidator = require('../validations/authorization')
-const loginValidator = require('../validations/authorization')
 const userData = require('../data/users')
 class userController {
   async authSignUp(request, response) {
-    const { error } = registerValidator(request.body)
-
-    if (error) return response.status(422).send(error.details[0].message)
-
     const checkEmailExist = userData.find((user) => user.email === request.body.email)
-    if (checkEmailExist) return response.status(422).send('Email is exist')
+    if (checkEmailExist) return response.status(422).send({ email: 'Email is exist' })
     const createdAt = new Date()
 
     const user = {
@@ -26,21 +20,17 @@ class userController {
     }
   }
   async authLogin(request, response) {
-    const { error } = loginValidator(request.body)
-
-    if (error) return response.status(422).send(error.details[0].message)
-
     const checkEmailExist = userData.find((user) => user.email === request.body.email)
-    if (!checkEmailExist) return response.status(422).send('Email is not exists!')
-    const checkPassword = userData.find(
+    if (!checkEmailExist) return response.status(422).send({ email: 'Email is not exists!' })
+    const userInfo = userData.find(
       (user) => user.email === request.body.email && user.password === request.body.password
     )
-    if (!checkPassword) return response.status(422).send('Password is not correct!')
+    if (!userInfo) return response.status(422).send({ password: 'Password is not correct!' })
 
     const user = {
       status: 200,
       email: request.body.email,
-      password: request.body.password,
+      role: userInfo.role,
     }
 
     try {

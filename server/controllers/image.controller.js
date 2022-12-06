@@ -8,6 +8,9 @@ class productController {
   getProductImage(req, res) {
     res.sendFile(path.join(process.cwd(), 'images', 'products', req.params.id + '.webp'))
   }
+  getLogo(req, res) {
+    res.sendFile(path.join(process.cwd(), 'images', 'icons', 'logo.jpg'))
+  }
 }
 
 module.exports = new productController()

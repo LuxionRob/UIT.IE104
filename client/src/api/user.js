@@ -5,11 +5,11 @@ export const getUser = async () => {
     const data = await instance.get('users').then((res) => res)
     return data
   } catch (error) {
-    alert(error)
+    return Promise.reject(error)
   }
 }
 
-export const authSignUp = async ({ email, password }) => {
+export const authLogin = async ({ email, password }) => {
   try {
     const data = await instance
       .post('/auth/login', {
@@ -19,11 +19,11 @@ export const authSignUp = async ({ email, password }) => {
       .then((res) => res)
     return data
   } catch (error) {
-    alert(error)
+    return Promise.reject(error)
   }
 }
 
-export const authLogin = async ({ email, password }) => {
+export const authSignUp = async ({ email, password }) => {
   try {
     const data = await instance
       .post('auth/sign-up', {

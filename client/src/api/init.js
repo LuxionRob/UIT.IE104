@@ -1,5 +1,4 @@
 import axios from 'axios'
-require('dotenv').config()
 
 const PORT = 3003
 const instance = axios.create({

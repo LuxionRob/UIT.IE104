@@ -5,12 +5,11 @@ import Footer from '../components/Footer'
 
 const DefaultLayout = () => {
   return (
-    <React.Fragment>
-      <h1>Layout ne</h1>
+    <div className='flex flex-col min-h-screen'>
       <Header />
       <Outlet />
       <Footer />
-    </React.Fragment>
+    </div>
   )
 }
 

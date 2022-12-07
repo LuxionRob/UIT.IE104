@@ -4,12 +4,12 @@ import { AuthContext } from './Auth'
 import Loading from './Loading'
 
 const PrivateRoute = ({ ...otherProps }) => {
-  const { isAuthenticated, isLoading } = useContext(AuthContext)
+  const { authenticatedAccount, isLoading } = useContext(AuthContext)
 
   return (
     <Fragment>
       {!isLoading ? (
-        isAuthenticated ? (
+        authenticatedAccount ? (
           <Outlet />
         ) : (
           <Navigate to={otherProps.redirectTo ? otherProps.redirectTo : '/'} />

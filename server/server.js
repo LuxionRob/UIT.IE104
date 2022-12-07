@@ -17,7 +17,6 @@ server.use(jsonServer.bodyParser)
 server.use(
   jsonServer.rewriter({
     '/api/users\\?id=:id': 'api/user/:id',
-    '/blog/:resource/:id/show': '/:resource/:id',
   })
 )
 

@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import Payment from './pages/Payment'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
-import Register from './pages/Register'
+import SignUp from './pages/SignUp'
 import AboutUs from './pages/AboutUs'
 import NoPage from './pages/NoPage'
 import PrivateRoute from './components/PrivateRoute'
@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/sign-up' element={<SignUp />} />
           <Route path='/' element={<DefaultLayout />}>
             <Route index element={<Home />} />
             <Route path='/payment' element={<PrivateRoute />}>

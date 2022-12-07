@@ -1,13 +1,14 @@
-const userData = require('../data/users')
+const fs = require('fs')
+const path = require('path')
 class userController {
   async authSignUp(request, response) {
-    const checkEmailExist = userData.find((user) => user.email === request.body.email)
-    if (checkEmailExist) return response.status(422).send({ email: 'Email is exist' })
-    const createdAt = new Date()
+    const db = fs.readFileSync(path.resolve(process.cwd(), 'db.json'))
+    const userList = JSON.parse(db).users
+    const checkEmailExist = userList.find((user) => user.email === request.body.email)
+    if (checkEmailExist) return response.status(422).send({ email: 'Địa chỉ email đã tồn tại!' })
 
+    const createdAt = new Date()
     const user = {
-      status: 200,
-      id: userData.length + 1,
       email: request.body.email,
       password: request.body.password,
       createdAt: createdAt.toISOString(),
@@ -16,19 +17,21 @@ class userController {
     try {
       response.send(user)
     } catch (err) {
-      response.status(400).send(err)
+      response.status(404).send(err)
     }
   }
   async authLogin(request, response) {
-    const checkEmailExist = userData.find((user) => user.email === request.body.email)
-    if (!checkEmailExist) return response.status(422).send({ email: 'Email is not exists!' })
-    const userInfo = userData.find(
+    const db = fs.readFileSync(path.resolve(process.cwd(), 'db.json'))
+    const userList = JSON.parse(db).users
+    const checkEmailExist = userList.find((user) => user.email === request.body.email)
+    if (!checkEmailExist) return response.status(422).send({ email: 'Địa chỉ email không chính xác!' })
+    const userInfo = userList.find(
       (user) => user.email === request.body.email && user.password === request.body.password
     )
-    if (!userInfo) return response.status(422).send({ password: 'Password is not correct!' })
+    if (!userInfo) return response.status(422).send({ password: 'Mật khẩu không chính xác' })
 
     const user = {
-      status: 200,
+      id: userInfo.id,
       email: request.body.email,
       role: userInfo.role,
     }
@@ -36,7 +39,7 @@ class userController {
     try {
       response.send(user)
     } catch (err) {
-      response.status(400).send(err)
+      response.status(404).send(err)
     }
   }
 }

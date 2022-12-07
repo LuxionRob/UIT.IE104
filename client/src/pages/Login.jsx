@@ -33,31 +33,27 @@ const Login = () => {
       errors.status = 'ERROR'
       errors.password = 'Mật khẩu phải có từ 6 đến 24 kí tự!'
     }
-    if (errors.status === 'ERROR') {
-      setError(errors)
-    }
     return errors
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const errors = validate(curEmail, curPassword)
     if (errors.status === 'ERROR') {
       setError(errors)
     } else {
-      login({ email: curEmail, password: curPassword })
-        .then((res) => {
-          if (res.status === 200) navigate('/')
-        })
-        .catch((res) => {
-          if (res.response.data?.email) {
-            errors.email = res.response.data?.email
-            setError(errors)
-          } else if (res.response.data?.password) {
-            errors.password = res.response.data?.password
-            setError(errors)
-          }
-        })
+      try {
+        const resLogin = await login({ email: curEmail, password: curPassword })
+        navigate('/')
+      } catch (res) {
+        if (res.response.data?.email) {
+          errors.email = res.response.data?.email
+          setError(errors)
+        } else if (res.response.data?.password) {
+          errors.password = res.response.data?.password
+          setError(errors)
+        }
+      }
     }
   }
 
@@ -93,9 +89,9 @@ const Login = () => {
           value={curPassword}
         />
         {error.password && <span className='self-start text-red-500'>{error.password}</span>}
-        <Link to='/forgot-password' className='text-primary self-start font-bold mt-2 mb-4'>
+        {/* <Link to='/forgot-password' className='text-primary self-start font-bold mt-2 mb-4'>
           Quên mật khẩu
-        </Link>
+        </Link> */}
         <div className='flex justify-between items-center w-full'>
           <Link to='/sign-up' className='text-primary hover:bg-gray-300 hover:shadow-gray-300'>
             Tạo tài khoản

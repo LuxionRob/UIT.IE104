@@ -1,5 +1,14 @@
 import instance from './init'
 
+export const getAllProduct = async () => {
+  try {
+    const productInfo = await instance.get('/products')
+    return Promise.resolve(productInfo)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
 export const getProductById = async (id) => {
   try {
     const productInfo = await instance.get(`/products/${id}`)

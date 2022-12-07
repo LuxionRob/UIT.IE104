@@ -12,7 +12,6 @@ const Profile = () => {
     try {
       const userInfo = await getUserById(authenticatedAccount.id)
       setUser(userInfo.data)
-      console.log(userInfo.data)
       return Promise.resolve()
     } catch (error) {
       if (error.response) {

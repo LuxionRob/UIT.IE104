@@ -24,19 +24,16 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(function ({ addUtilities }) {
-      addUtilities({
+    plugin(function ({ addComponents }) {
+      addComponents({
         '.input': {
           border: 'solid 0.1rem #ccc',
           padding: '0.5rem 0.5rem',
-          borderRadius: '0.3rem',
           '&:hover': {
             outline: 'solid 0.1rem #4d8b54aa',
-            borderRadius: '0.3rem',
           },
           '&:focus-visible': {
             outline: 'solid 0.15rem #4d8b54',
-            borderRadius: '0.3rem',
           },
         },
       })

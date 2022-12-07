@@ -35,3 +35,12 @@ export const addUser = async (data) => {
     return Promise.reject(error)
   }
 }
+
+export const getUserById = async (id) => {
+  try {
+    const res = await instance.get(`/users/${id}`)
+    return Promise.resolve(res)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}

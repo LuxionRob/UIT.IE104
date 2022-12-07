@@ -4,8 +4,8 @@ import { AuthContext } from '../components/Auth'
 const emailRegExp = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
 
 const Login = () => {
-  const [curEmail, setCurEmail] = useState('')
-  const [curPassword, setCurPassword] = useState('')
+  const [curEmail, setCurEmail] = useState('nikalinhlan@nijigen.com')
+  const [curPassword, setCurPassword] = useState('123456789')
   const [error, setError] = useState({})
   const { login } = useContext(AuthContext)
   const navigate = useNavigate()

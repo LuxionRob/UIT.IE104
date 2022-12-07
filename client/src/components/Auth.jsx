@@ -5,7 +5,7 @@ export const AuthContext = React.createContext({})
 
 export default function Auth({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   const login = async (credentials) => {
     try {

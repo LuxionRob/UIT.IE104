@@ -7,27 +7,10 @@ import { FaEnvelope } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <div
-      className='
-        bg-neutral-800
-         text-white
-          pt-1 
-          relative
-           bottom-0
-           w-full
-        '
-    >
-      <span className='footer w-1/5 h-40 float-left font-black text-primary text-5xl text-center pt-14'>FiveTea.</span>
+    <div className='bg-neutral-800 text-white pt-1 relative bottom-0 w-full'>
+      <span className='footer w-1/5 p-8 float-left font-black text-primary text-5xl text-center mt-12'>FiveTea.</span>
       <div>
-        <ul
-          className='
-                    list-none 
-                    flex
-                    flex-nowrap
-                    pl-0
-                    w-9/12
-                '
-        >
+        <ul className='list-none flex flex-nowrap pl-0 w-9/12'>
           {/* column1 */}
           <li className='w-3/12 pl-10'>
             <h4 className='text-primary text-xl font-medium my-2.5 ml-6'>Địa chỉ liên hệ</h4>
@@ -84,7 +67,7 @@ const Footer = () => {
           </li>
           {/* column4 */}
           <li className='w-3/12 pl-10'>
-            <h4 className='text-primary text-xl font-medium my-2.5 ml-6'>Chính sách</h4>
+            <h4 className='text-left text-primary text-xl font-medium my-2.5'>Chính sách</h4>
             <ul className='list-none pl-0 '>
               <li>Hình thức thanh toán</li>
               <li>Vận chuyển giao nhận</li>
@@ -93,9 +76,9 @@ const Footer = () => {
             </ul>
           </li>
         </ul>
-        <hr />
+        <hr className='mt-2' />
         <div className='text-center p-6'>
-          <p className='col-slogan'>Chúng tôi biết bạn có nhiều sự lựa chọn,cảm ơn vì đã chọn chúng tôi</p>
+          <p>Chúng tôi biết bạn có nhiều sự lựa chọn,cảm ơn vì đã chọn chúng tôi</p>
         </div>
       </div>
     </div>

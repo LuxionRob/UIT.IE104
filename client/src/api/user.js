@@ -2,35 +2,36 @@ import instance from './init'
 
 export const getUser = async () => {
   try {
-    const data = await instance.get('users').then((res) => res)
-    return data
+    const res = await instance.get('users').then((res) => res)
+    return Promise.resolve(res)
   } catch (error) {
     return Promise.reject(error)
   }
 }
 
-export const authLogin = async ({ email, password }) => {
+export const authLogin = async (data) => {
   try {
-    const data = await instance
-      .post('/auth/login', {
-        email,
-        password,
-      })
-      .then((res) => res)
-    return data
+    const res = await instance.post('/auth/login', data)
+    return Promise.resolve(res)
   } catch (error) {
     return Promise.reject(error)
   }
 }
 
-export const authSignUp = async ({ email, password }) => {
+export const authSignUp = async (data) => {
   try {
-    const data = await instance
-      .post('auth/sign-up', {
-        email,
-        password,
-      })
-      .then((res) => res)
-    return data
-  } catch (error) {}
+    const res = await instance.post('/auth/sign-up', data)
+    return Promise.resolve(res)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
+export const addUser = async (data) => {
+  try {
+    const res = await instance.post('/users', data)
+    return Promise.resolve(res)
+  } catch (error) {
+    return Promise.reject(error)
+  }
 }

@@ -37,6 +37,30 @@ module.exports = {
           },
         },
       })
+      addComponents({
+        '.tooltip': {
+          position: 'relative',
+          '&:before': {
+            content: 'attr(data-text)',
+            display: 'inline-block',
+            position: 'absolute',
+            bottom: '50%',
+            background: '#000',
+            color: '#fff',
+            padding: '5px',
+            'border-radius': '5px',
+            opacity: 0,
+            transition: '0.3s',
+            overflow: 'hidden',
+            'max-width': '100%',
+            'pointer-events': 'none',
+          },
+          '&:hover::before': {
+            opacity: 1,
+            bottom: '100%',
+          },
+        },
+      })
     }),
   ],
 }

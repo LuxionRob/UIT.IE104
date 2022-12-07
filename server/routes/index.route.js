@@ -1,3 +1,4 @@
+const queryString = require('query-string')
 const jsonServer = require('json-server')
 const router = jsonServer.router('db.json')
 const imagesRouter = require('./image.route')
@@ -5,8 +6,7 @@ const authRouter = require('./auth.route')
 
 function routes(server) {
   router.render = (req, res) => {
-    const headers = res.getHeaders()
-    const totalCount = headers['x-total-count']
+    const totalCount = res.locals.data.length
     if (req.originalMethod === 'GET' && totalCount) {
       const queryParams = queryString.parse(req._parsedOriginalUrl.query)
       const result = {

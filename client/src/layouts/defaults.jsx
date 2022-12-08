@@ -7,7 +7,7 @@ const DefaultLayout = () => {
   return (
     <div className='flex flex-col min-h-screen'>
       <Header />
-      <Outlet />
+      <Outlet className='grow' />
       <Footer />
     </div>
   )

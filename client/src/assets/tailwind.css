@@ -2,9 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-@base {
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@layer base {
   html {
-    @apply font-sans;
+    font-family: Roboto, Arial, sans-serif;
+  }
+}
+
+@layer components {
+  .navbar-item {
+    @apply text-primary ml-6 px-6 leading-[6rem] whitespace-nowrap w-fit text-lg;
+  }
+  .navbar-item:hover {
+    @apply text-white bg-primary;
+  }
+  .navbar-item.active {
+    @apply relative;
+  }
+  .navbar-item.active::after {
+    content: '';
+    @apply absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-5 h-1 w-16  bg-primary rounded-xl;
   }
 }

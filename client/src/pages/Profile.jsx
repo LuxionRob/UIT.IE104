@@ -27,7 +27,7 @@ const Profile = () => {
   const editProfile = async () => {}
 
   return (
-    <div className='flex max-w-screen px-64 mb-16'>
+    <div className='flex max-w-screen px-64 mb-16 grow'>
       <div className='flex basis-1/3 flex-col items-center'>
         <img width='300' className='object-contain rounded-full' src={user.avatarImage} alt='avatar' />
         <span className='text-primary self-start font-bold text-2xl mt-8'>{user.name}</span>

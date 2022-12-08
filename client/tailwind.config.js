@@ -24,7 +24,7 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(function ({ addComponents }) {
+    plugin(function ({ addBase, addComponents }) {
       addComponents({
         '.input': {
           border: 'solid 0.1rem #ccc',
@@ -61,6 +61,7 @@ module.exports = {
           },
         },
       })
+      addBase({ html: { fontFamily: 'Noto Sans, Roboto, sans' } })
     }),
   ],
 }

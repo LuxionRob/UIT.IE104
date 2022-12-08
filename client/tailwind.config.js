@@ -61,6 +61,34 @@ module.exports = {
           },
         },
       })
+      addComponents({
+        '.button': {
+          border: 'solid 2px #e5e7eb',
+          borderRadius: '0.5rem',
+          color: 'black',
+          background: '#f3f4f6',
+          '&:hover': {
+            background: '#e5e7eb',
+          },
+          '&:active': {
+            boxShadow: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05);',
+          },
+        },
+      })
+      addComponents({
+        '.button-primary': {
+          border: 'solid 2px #e5e7eb',
+          borderRadius: '0.5rem',
+          color: 'white',
+          background: '#4d8b54',
+          '&:hover': {
+            background: '#457D4B',
+          },
+          '&:active': {
+            boxShadow: 'inset 2px 2px 4px 0 rgb(0 0 0 / 0.25);',
+          },
+        },
+      })
     }),
   ],
 }

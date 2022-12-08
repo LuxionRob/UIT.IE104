@@ -37,7 +37,7 @@ const Footer = () => {
           {/* column3 */}
           <li className='basis-1/4'>
             <h4 className='text-primary text-xl font-medium mb-2.5'>Liên hệ trực tiếp</h4>
-            <div className='flex flex justify-start'>
+            <div className='flex justify-start'>
               <a target='_bank' href='https://www.facebook.com' className='text-3xl mr-2'>
                 <FaFacebook className='hover:opacity-90 active:opacity-100' />
               </a>

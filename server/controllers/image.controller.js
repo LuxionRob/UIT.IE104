@@ -8,6 +8,9 @@ class productController {
   getProductImage(req, res) {
     res.sendFile(path.join(process.cwd(), 'images', 'products', req.params.id + '.webp'))
   }
+  getMemberImage(req, res) {
+    res.sendFile(path.join(process.cwd(), 'images', 'members', req.params.id + '.webp'))
+  }
   getLogo(req, res) {
     res.sendFile(path.join(process.cwd(), 'images', 'icons', 'logo.jpg'))
   }

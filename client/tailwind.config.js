@@ -24,19 +24,69 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(function ({ addUtilities }) {
-      addUtilities({
+    plugin(function ({ addBase, addComponents }) {
+      addComponents({
         '.input': {
           border: 'solid 0.1rem #ccc',
           padding: '0.5rem 0.5rem',
-          borderRadius: '0.3rem',
           '&:hover': {
             outline: 'solid 0.1rem #4d8b54aa',
-            borderRadius: '0.3rem',
           },
           '&:focus-visible': {
             outline: 'solid 0.15rem #4d8b54',
-            borderRadius: '0.3rem',
+          },
+        },
+      })
+      addComponents({
+        '.tooltip': {
+          position: 'relative',
+          '&:before': {
+            content: 'attr(data-text)',
+            display: 'inline-block',
+            position: 'absolute',
+            bottom: '50%',
+            background: '#000',
+            color: '#fff',
+            padding: '5px',
+            'border-radius': '5px',
+            opacity: 0,
+            transition: '0.3s',
+            overflow: 'hidden',
+            'max-width': '100%',
+            'pointer-events': 'none',
+          },
+          '&:hover::before': {
+            opacity: 1,
+            bottom: '100%',
+          },
+        },
+      })
+      addBase({ html: { fontFamily: 'Noto Sans, Roboto, sans' } })
+      addComponents({
+        '.button': {
+          border: 'solid 2px #e5e7eb',
+          borderRadius: '0.5rem',
+          color: 'black',
+          background: '#f3f4f6',
+          '&:hover': {
+            background: '#e5e7eb',
+          },
+          '&:active': {
+            boxShadow: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05);',
+          },
+        },
+      })
+      addComponents({
+        '.button-primary': {
+          border: 'solid 2px #e5e7eb',
+          borderRadius: '0.5rem',
+          color: 'white',
+          background: '#4d8b54',
+          '&:hover': {
+            background: '#457D4B',
+          },
+          '&:active': {
+            boxShadow: 'inset 2px 2px 4px 0 rgb(0 0 0 / 0.25);',
           },
         },
       })

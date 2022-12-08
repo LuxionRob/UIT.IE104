@@ -33,18 +33,18 @@ const AboutUs = () => {
             const newClass = memberName[index].class ? ` ${memberName[index].class}` : ''
             const imageClass = 'px-5 object-cover h-32 rounded-full hover:bg-green-700 transition-all delay-200 linear' + newClass
             return (
-              <div key={memberName[index].name}>
-                <img
-                  className={imageClass}
-                  src={`http://localhost:3003/api/images/members/${index + 1}`}
-                  alt='Memberofteam'
-                  width='200'
-                  height='200'
-                />
-
-                <span  className = 'block text-center font-semibold hover:text-green-500'> <a href={memberName[index].link}>{memberName[index].name}</a> </span>
-                
-              </div>
+              <a href={memberName[index].link}>
+                <div key={memberName[index].name}>
+                  <img
+                    className={imageClass}
+                    src={`http://localhost:3003/api/images/members/${index + 1}`}
+                    alt='Memberofteam'
+                    width='200'
+                    height='200'
+                  />
+                  <span  className = 'block text-center font-semibold hover:text-green-500'> {memberName[index].name} </span>
+                </div>
+              </a>
               
             )
           })}

@@ -7,7 +7,6 @@ export default function Auth({ children }) {
   const [authenticatedAccount, setAuthenticatedAccount] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-
   const login = async (credentials) => {
     try {
       setIsLoading(true)
@@ -33,7 +32,13 @@ export default function Auth({ children }) {
     }
   }
 
+  const signOut = () => {
+    setAuthenticatedAccount(false)
+  }
+
   return (
-    <AuthContext.Provider value={{ authenticatedAccount, isLoading, login, signUp }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ authenticatedAccount, isLoading, login, signUp, signOut }}>
+      {children}
+    </AuthContext.Provider>
   )
 }

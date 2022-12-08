@@ -44,3 +44,12 @@ export const getUserById = async (id) => {
     return Promise.reject(error)
   }
 }
+
+export const updateUser = async (user) => {
+  try {
+    const res = await instance.put(`/users/${user.id}`, user)
+    return Promise.resolve(res)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}

@@ -158,7 +158,7 @@ const Profile = () => {
           <div className='flex justify-center items-center grow flex-col'>
             <span>Hiện không có sản phẩm nào</span>
             <Link className='button-primary px-8 py-2 mt-4' to='/products'>
-              Đi tớ mua sắm
+              Đi tới mua sắm
             </Link>
           </div>
         )}

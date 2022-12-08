@@ -4,6 +4,22 @@
 
 @layer base {
   html {
-    @apply font-sans;
+    font-family: Roboto, Arial, sans-serif;
+  }
+}
+
+@layer components {
+  .navbar-item {
+    @apply text-primary ml-6 px-6 leading-[6rem] whitespace-nowrap w-fit text-lg;
+  }
+  .navbar-item:hover {
+    @apply text-white bg-primary;
+  }
+  .navbar-item.active {
+    @apply relative;
+  }
+  .navbar-item.active::after {
+    content: '';
+    @apply absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-5 h-1 w-16  bg-primary rounded-xl;
   }
 }

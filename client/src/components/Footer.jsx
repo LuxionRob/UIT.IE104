@@ -4,6 +4,7 @@ import { FaFacebook, FaYoutube, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'r
 const Footer = () => {
   return (
     <div className='pt-1 relative bottom-0 w-full'>
+      <hr className='mb-10 bg-primary h-[1.5px]' />
       <div className='flex items-center'>
         <span className='w-1/5 font-black text-primary text-5xl text-center font-sans'>FireTea.</span>
         <ul className='flex flex-nowrap pl-0 w-9/12'>
@@ -57,7 +58,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <hr className='mt-4' />
+      <hr className='mt-10 bg-primary h-[1.5px]' />
       <div className='text-center p-6'>
         <p>Chúng tôi biết bạn có nhiều sự lựa chọn, cảm ơn vì đã chọn chúng tôi</p>
       </div>

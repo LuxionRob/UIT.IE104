@@ -7,3 +7,6 @@ export function stringCut(string) {
 
   return cutString
 }
+
+export const transformToVNCurrency = (number) =>
+  new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number)

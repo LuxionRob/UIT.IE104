@@ -2,18 +2,20 @@ import instance from './init'
 import { getProductById } from './product'
 import { getUserById } from './user'
 
-export const updateCart = async (userId, productsId) => {
+export const updateCart = async (userInfo, cart) => {
   try {
-    const products = await Promise.all(
-      productsId.map(async (productId) => {
-        const res = await getProductById(productId)
-        return res.data
-      })
-    )
-    const userRes = await getUserById(userId)
-    const user = userRes.data
-    user.cart = products
-    const res = await instance.put(`/users/${userId}`, user)
+    const userCart = userInfo.cart
+    const needToChangeCart = cart.filter((v) => userCart.find((item) => item.id === v.id))
+    const needToAddCart = cart.filter((v) => userCart.find((item) => item.id !== v.id))
+    let output = [...userCart, ...needToAddCart]
+
+    needToChangeCart.forEach((element) => {
+      const index = output.findIndex((item) => item.id === element.id)
+      output[index].quanity += element.quanity
+    })
+    const user = { ...userInfo, cart: output }
+    console.log({ user })
+    const res = await instance.put(`/users/${user.id}`, user)
     return Promise.resolve(res)
   } catch (error) {
     return Promise.reject(error)

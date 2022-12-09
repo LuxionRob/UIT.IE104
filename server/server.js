@@ -16,7 +16,7 @@ server.use(jsonServer.bodyParser)
 // Config router
 server.use(
   jsonServer.rewriter({
-    '/api/users\\?id=:id': 'api/user/:id',
+    '/api/users\\?id=:id': '/api/users/:id',
   })
 )
 

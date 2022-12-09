@@ -7,6 +7,7 @@ import Profile from './pages/Profile'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import Products from './pages/Products'
+import ProductInfo from './pages/ProductInfo'
 import AboutUs from './pages/AboutUs'
 import NoPage from './pages/NoPage'
 import PrivateRoute from './components/PrivateRoute'
@@ -23,14 +24,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/' element={<DefaultLayout />}>
             <Route index element={<Home />} />
-            <Route path='/payment' element={<PrivateRoute />}>
-              <Route path='' element={<Payment />} />
-            </Route>
-            <Route path='/profile' element={<PrivateRoute />}>
-              <Route path='' element={<Profile />} />
-            </Route>
             <Route path='/products' element={<Products />} />
             <Route path='/about-us' element={<AboutUs />} />
+            <Route path='' element={<PrivateRoute />}>
+              <Route path='/payment' element={<Payment />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/products/:id' element={<ProductInfo />} />
+            </Route>
             <Route path='/404' element={<NoPage />} />
           </Route>
         </Routes>

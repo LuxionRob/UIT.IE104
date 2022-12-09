@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { authSignUp, authLogin } from '../api/user'
+import { getUserById, authSignUp, authLogin } from '../api/user'
 
 export const AuthContext = React.createContext({})
 
@@ -10,12 +10,13 @@ export default function Auth({ children }) {
   const login = async (credentials) => {
     try {
       setIsLoading(true)
-      const res = await authLogin(credentials)
-      setAuthenticatedAccount(res.data)
+      const info = await authLogin(credentials)
+      const user = await getUserById(info.data.id)
+      setAuthenticatedAccount(user.data)
       setIsLoading(false)
-      return Promise.resolve(res)
+      return Promise.resolve(user)
     } catch (error) {
-      setAuthenticatedAccount(null)
+      setAuthenticatedAccount(false)
       setIsLoading(false)
       return Promise.reject(error)
     }
@@ -37,7 +38,7 @@ export default function Auth({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ authenticatedAccount, isLoading, login, signUp, signOut }}>
+    <AuthContext.Provider value={{ authenticatedAccount, login, isLoading, signUp, signOut }}>
       {children}
     </AuthContext.Provider>
   )

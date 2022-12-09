@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { AuthContext } from '../components/Auth'
-import { getUserById } from '../api/user'
 const nav = [
   { name: 'Trang chủ', path: '/' },
   { name: 'Sản phẩm', path: '/products' },
@@ -10,21 +9,9 @@ const nav = [
 
 const Header = () => {
   const { authenticatedAccount, signOut } = useContext(AuthContext)
-  const [userInfo, setUserInfo] = useState(false)
   const [isDropdownShow, setIsDropdownShow] = useState(false)
   const ref = useRef(null)
 
-  const fetchUser = async () => {
-    if (authenticatedAccount) {
-      try {
-        const user = await getUserById(authenticatedAccount.id)
-        setUserInfo(user.data)
-        return Promise.resolve()
-      } catch (error) {
-        return Promise.reject(error)
-      }
-    }
-  }
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!ref?.current?.contains(event.target)) {
@@ -34,12 +21,7 @@ const Header = () => {
     document.addEventListener('mousedown', handleClickOutside)
   }, [ref])
 
-  useEffect(() => {
-    fetchUser()
-  }, [])
-
   const onLogOut = () => {
-    setUserInfo(false)
     signOut()
     setIsDropdownShow(false)
   }
@@ -65,14 +47,14 @@ const Header = () => {
             type='text'
             placeholder='Bạn muốn uống gì ...'
           />
-          {userInfo ? (
+          {authenticatedAccount ? (
             <div className='ml-8 relative'>
               <img
                 onClick={() => setIsDropdownShow(!isDropdownShow)}
                 width='65'
                 className='object-contain rounded-full cursor-pointer'
-                src={userInfo.avatarImage}
-                alt={userInfo.name}
+                src={authenticatedAccount.avatarImage}
+                alt={authenticatedAccount.name}
               />
               {isDropdownShow && (
                 <ul
@@ -80,8 +62,8 @@ const Header = () => {
                   className='z-10 absolute top-full right-0 w-64 shadow-lg bg-white border-2 border-gray-200 rounded-lg'
                 >
                   <div className='pl-4 py-4'>
-                    <h2 className='font-bold'>{userInfo.name}</h2>
-                    <span className='font-normal capitalize'>{userInfo.role}</span>
+                    <h2 className='font-bold'>{authenticatedAccount.name}</h2>
+                    <span className='font-normal capitalize'>{authenticatedAccount.role}</span>
                   </div>
                   <hr />
                   <div>
@@ -97,7 +79,7 @@ const Header = () => {
                     >
                       Thanh toán
                     </Link>
-                    {userInfo.role === 'admin' && (
+                    {authenticatedAccount.role === 'admin' && (
                       <Link
                         to='/admin'
                         className='button w-full bg-white rounded-none border-none pl-4 py-2 inline-block'

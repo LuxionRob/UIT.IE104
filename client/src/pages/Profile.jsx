@@ -15,21 +15,8 @@ const Profile = () => {
   const { authenticatedAccount } = useContext(AuthContext)
   const navigate = useNavigate()
 
-  const fetchUserInfo = async () => {
-    try {
-      const userInfo = await getUserById(authenticatedAccount.id)
-      setUser(userInfo.data)
-      console.log(userInfo.data)
-      return Promise.resolve()
-    } catch (error) {
-      if (error.response) {
-        navigate('/404')
-      }
-    }
-  }
-
   useEffect(() => {
-    fetchUserInfo()
+    setUser(authenticatedAccount)
   }, [])
 
   const toggleEditProfile = () => {
@@ -154,7 +141,7 @@ const Profile = () => {
         <div className='my-4'>
           {user.history && user.history.map((product) => <ProductInfo key={product.id} productInfo={product} />)}
         </div>
-        {user.history && user.history.length === 0 && (
+        {user.history && user.history?.length === 0 && (
           <div className='flex justify-center items-center grow flex-col'>
             <span>Hiện không có sản phẩm nào</span>
             <Link className='button-primary px-8 py-2 mt-4' to='/products'>

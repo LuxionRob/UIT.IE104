@@ -5,18 +5,9 @@ import { AuthContext } from '../components/Auth'
 import { getProductById } from '../api/product'
 import { updateUser } from '../api/user'
 import { transformToVNCurrency } from '../utils'
-const mergeCart = (tempCart, cart) => {
-  const mergedCart = tempCart.map((tempItem) => {
-    const existItem = cart.find((item) => item.id === tempItem.id)
-    if (existItem) {
-      tempItem.quanity += existItem.quanity
-    }
-    return tempItem
-  })
-  return mergedCart
-}
+
 const ProductInfo = () => {
-  const { cart, authenticatedAccount, setCart } = useContext(AuthContext)
+  const { authenticatedAccount } = useContext(AuthContext)
   const [productInfo, setProductInfo] = useState(false)
   const [curPrice, setCurPrice] = useState(0)
   const [curQuanity, setCurQuanity] = useState(1)
@@ -51,26 +42,14 @@ const ProductInfo = () => {
   const addCart = async () => {
     try {
       const newProductInfo = { ...productInfo, quanity: curQuanity }
-      if (authenticatedAccount) {
-        const newCart = mergeCart([newProductInfo], authenticatedAccount.cart)
-        const newUser = { ...authenticatedAccount, cart: newCart }
-        const res = await updateUser(newUser)
+      const index = authenticatedAccount.cart.findIndex((item) => item.id === newProductInfo.id)
+      if (index === -1) {
+        authenticatedAccount.cart.push(newProductInfo)
       } else {
-        setCart((cart) => {
-          if (cart.length > 0) {
-            const tempIndexCart = cart.findIndex((item) => item.id === newProductInfo.id)
-            if (tempIndexCart >= 0) {
-              cart[tempIndexCart].quanity += curQuanity
-              return cart
-            } else {
-              cart.push(newProductInfo)
-              return cart
-            }
-          } else {
-            return [newProductInfo]
-          }
-        })
+        authenticatedAccount.cart[index].quanity += curQuanity
       }
+      const newUser = { ...authenticatedAccount }
+      const res = await updateUser(newUser)
       return Promise.resolve()
     } catch (error) {
       return Promise.reject(error)

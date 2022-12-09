@@ -6,14 +6,15 @@ const authRouter = require('./auth.route')
 
 function routes(server) {
   router.render = (req, res) => {
-    const totalCount = res.locals.data.length
+    const headers = res.getHeaders()
+    const totalCount = headers['x-total-count']
     if (req.originalMethod === 'GET' && totalCount) {
       const queryParams = queryString.parse(req._parsedOriginalUrl.query)
       const result = {
         data: res.locals.data,
         pagination: {
           _page: Number.parseInt(queryParams._page) || 1,
-          _limit: Number.parseInt(queryParams._limit) || 10,
+          _limit: Number.parseInt(queryParams._limit) || 12,
           _totalRows: Number.parseInt(totalCount),
         },
       }

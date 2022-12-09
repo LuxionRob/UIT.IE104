@@ -12,7 +12,7 @@ module.exports = [
     cart: [
       {
         id: 4,
-        type: 'milk tea',
+        type: 'Trà sữa',
         name: 'Trà Đào Bưởi Hồng Trân Châu Baby',
         price: '30000',
         description: 'Trà sữa ngon tuyệt!',
@@ -22,7 +22,7 @@ module.exports = [
       },
       {
         id: 2,
-        type: 'Tea',
+        type: 'Trà',
         name: 'Trà Mận Hạt Sen',
         price: '27000',
         description: 'Trà sữa ngon tuyệt!',

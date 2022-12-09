@@ -46,6 +46,7 @@ const Login = () => {
         const resLogin = await login({ email: curEmail, password: curPassword })
         navigate('/')
       } catch (res) {
+        console.log(res)
         if (res.response.data?.email) {
           errors.email = res.response.data?.email
           setError(errors)

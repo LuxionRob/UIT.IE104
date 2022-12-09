@@ -74,6 +74,11 @@ module.exports = {
           '&:active': {
             boxShadow: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05);',
           },
+          '&:disabled': {
+            background: '#f3f4f6',
+            opacity: 0.5,
+            boxShadow: 'none',
+          },
         },
       })
       addComponents({
@@ -87,6 +92,31 @@ module.exports = {
           },
           '&:active': {
             boxShadow: 'inset 2px 2px 4px 0 rgb(0 0 0 / 0.25);',
+          },
+          '&:disabled': {
+            background: '#4d8b54',
+            opacity: 0.5,
+            boxShadow: 'none',
+          },
+        },
+      })
+      addComponents({
+        '.button-secondary': {
+          border: 'solid 2px #4d8b54',
+          borderRadius: '0.5rem',
+          color: 'white',
+          background: '#4d8b5422',
+          '&:hover': {
+            background: '#4d8b5411',
+          },
+          '&:active': {
+            boxShadow: 'inset 2px 2px 4px 0 rgb(0 0 0 / 0.25);',
+            background: '#4d8b5433',
+          },
+          '&:disabled': {
+            background: '#4d8b5422',
+            opacity: 0.5,
+            boxShadow: 'none',
           },
         },
       })

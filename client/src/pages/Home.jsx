@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getAllProduct } from '../api/product'
+import { getPagedProduct } from '../api/product'
 import Banner from '../components/Banner'
 import ProductCard from '../components/ProductCard'
 const Home = () => {
@@ -11,10 +11,11 @@ const Home = () => {
 
   const fetch = async () => {
     try {
-      const res = await getAllProduct()
-      setproducts(res.data)
+      const res = await getPagedProduct({ _page: 1, _limit: 10 })
+      setproducts(res.data.data)
       return Promise.resolve()
     } catch (error) {
+      console.log(error)
       return Promise.reject(error)
     }
   }
@@ -43,7 +44,7 @@ const Home = () => {
       </div>
 
       <div className='my-0 mx-auto max-w-[1200px] mb-32'>
-        <Link to='/product'>
+        <Link to='/products'>
           <img className='my-0 mx-auto mt-10 rounded-xl' src='http://localhost:3003/api/images/banners/2' alt='' />
         </Link>
       </div>

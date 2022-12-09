@@ -13,12 +13,12 @@ const ProductCard = ({ product, className }) => {
       <div className='px-3 mt-7 flex justify-between text-primary'>
         <h2>{product.price}</h2>
 
-        <Link
+        <button
           className='rounded-lg border-primary border-spacing-2 border-2 p-2 -translate-y-[12px] hover:text-white hover:bg-primary'
           to='/payment'
         >
           Đặt hàng
-        </Link>
+        </button>
       </div>
     </Link>
   )

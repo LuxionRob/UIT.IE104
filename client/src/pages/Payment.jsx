@@ -43,6 +43,7 @@ const Payment = () => {
     newUserInfo.cart[index].quanity += 1
     setUserInfo(newUserInfo)
   }
+
   const handleDecreaseQuanity = (e, index) => {
     let newUserInfo = { ...userInfo }
     const quanity = (newUserInfo.cart[index].quanity -= 1)
@@ -51,6 +52,7 @@ const Payment = () => {
     }
     setUserInfo(newUserInfo)
   }
+
   return (
     <Fragment>
       <div className='flex w-full flex-col px-64 '>

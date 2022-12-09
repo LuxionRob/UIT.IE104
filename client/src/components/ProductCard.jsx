@@ -2,16 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { stringCut } from '../utils'
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, className }) => {
   return (
-    <div className='flex flex-col w-[200px] h-[330px] hover:shadow-xl relative'>
+    <div className={`flex flex-col w-full hover:shadow-2xl ${className}`}>
       <img alt={product.name} className='w-full' src={product.productImage} />
 
-      <div className='h-px w-3/4 bg-black mt-4 mx-auto'></div>
+      <div className='h-px w-3/4 bg-primary mt-4 mx-auto' />
       <span data-text={product.name} className='tooltip px-3 pt-2'>
         {stringCut(product.name)}
       </span>
-      <div className='px-3 mt-7 flex justify-between text-primary absolute bottom-1 right-1 left-1'>
+      <div className='px-3 mt-7 flex justify-between text-primary'>
         <h2>{product.price}</h2>
 
         <Link

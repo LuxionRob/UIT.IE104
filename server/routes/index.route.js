@@ -6,7 +6,8 @@ const authRouter = require('./auth.route')
 
 function routes(server) {
   router.render = (req, res) => {
-    const totalCount = res.locals.data.length
+    const headers = res.getHeaders()
+    const totalCount = headers['x-total-count']
     if (req.originalMethod === 'GET' && totalCount) {
       const queryParams = queryString.parse(req._parsedOriginalUrl.query)
       const result = {

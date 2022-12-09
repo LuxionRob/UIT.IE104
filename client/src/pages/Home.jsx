@@ -21,24 +21,22 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className='max-w-screen mx-64 mb-10'>
       {/* Banner */}
-      <Banner></Banner>
+      <Banner imgSrc={'http://localhost:3003/api/images/banners/1'} />
 
       {/* Product */}
 
-      <div className='mt-10 text-[25px] max-w-[1000px] my-0 mx-auto mb-10'>Sản phẩm mới</div>
+      <div className='mt-10 text-2xl mx-auto mb-10'>Sản phẩm mới</div>
 
-      <div className='flex m-w-[1100px] justify-center'>
+      <div className='grid grid-cols-4 gap-6'>
         {product &&
-          product
-            .splice(0, 4)
-            .map((product, index) => <ProductCard className={'mx-5'} key={index} product={product}></ProductCard>)}
+          product.splice(0, 4).map((product, index) => <ProductCard key={index} product={product}></ProductCard>)}
       </div>
 
-      <div className='mt-10 text-[25px] max-w-[1000px] my-0 mx-auto mb-10'>Sản phẩm bán chạy</div>
+      <div className='mt-10 text-2xl mx-auto mb-10'>Sản phẩm bán chạy</div>
 
-      <div className='flex m-w-[1100px] justify-center mb-24'>
+      <div className='grid grid-cols-4 gap-6'>
         {product &&
           product.splice(5, 4).map((product, index) => <ProductCard key={index} product={product}></ProductCard>)}
       </div>

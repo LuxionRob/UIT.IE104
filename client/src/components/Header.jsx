@@ -5,7 +5,6 @@ import { getUserById } from '../api/user'
 const nav = [
   { name: 'Trang chủ', path: '/' },
   { name: 'Sản phẩm', path: '/products' },
-  { name: 'Thông tin cá nhân', path: '/profile' },
   { name: 'Liên hệ', path: '/about-us' },
 ]
 

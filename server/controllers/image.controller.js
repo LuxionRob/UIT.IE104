@@ -14,6 +14,9 @@ class productController {
   getLogo(req, res) {
     res.sendFile(path.join(process.cwd(), 'images', 'icons', 'logo.jpg'))
   }
+  getBanner(req, res) {
+    res.sendFile(path.join(process.cwd(), 'images', 'banners', req.params.id + '.jpg'))
+  }
 }
 
 module.exports = new productController()

@@ -4,7 +4,7 @@ import { stringCut } from '../utils'
 
 const ProductCard = ({ product }) => {
   return (
-    <div className='flex flex-col w-[200px] h-[330px] hover:shadow-xl relative'>
+    <Link to={`/products/${product.id}`} className='flex flex-col w-[200px] h-[330px] hover:shadow-xl relative'>
       <img alt={product.name} className='w-full' src={product.productImage} />
 
       <div className='h-px w-3/4 bg-black mt-4 mx-auto'></div>
@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
           Đặt hàng
         </Link>
       </div>
-    </div>
+    </Link>
   )
 }
 

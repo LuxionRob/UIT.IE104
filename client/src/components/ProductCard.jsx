@@ -4,9 +4,8 @@ import { stringCut } from '../utils'
 
 const ProductCard = ({ product, className }) => {
   return (
-    <div className={`flex flex-col w-full hover:shadow-2xl ${className}`}>
+    <Link to={`/products/${product.id}`} className={`flex flex-col w-full hover:shadow-2xl ${className}`}>
       <img alt={product.name} className='w-full' src={product.productImage} />
-
       <div className='h-px w-3/4 bg-primary mt-4 mx-auto' />
       <span data-text={product.name} className='tooltip px-3 pt-2'>
         {stringCut(product.name)}
@@ -21,7 +20,7 @@ const ProductCard = ({ product, className }) => {
           Đặt hàng
         </Link>
       </div>
-    </div>
+    </Link>
   )
 }
 

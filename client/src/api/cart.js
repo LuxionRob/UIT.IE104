@@ -5,8 +5,6 @@ import { getUserById } from './user'
 export const updateCart = async (userInfo, cart) => {
   try {
     const userCart = userInfo.cart
-    console.log({ userCart })
-    console.log({ cart })
     const needToChangeCart = cart.filter((v) => userCart.find((item) => item.id === v.id))
     const needToAddCart = cart.filter((v) => userCart.find((item) => item.id !== v.id))
     let output = [...userCart, ...needToAddCart]

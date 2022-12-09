@@ -45,7 +45,7 @@ const Header = () => {
     setIsDropdownShow(false)
   }
   return (
-    <div className='px-0 md:px-32 xl:px-64 h-24 max-w-screen '>
+    <div className='px-64 h-24 max-w-screen '>
       <div className='flex justify-between'>
         <NavLink to='/' className='font-sans font-bold leading-[6rem] text-primary text-2xl'>
           FireTea.

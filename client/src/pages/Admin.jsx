@@ -96,7 +96,7 @@ const Admin = () => {
             <Select defaultValue={1} className='' onChange={handleChangeProduct}>
               {ordered?.length &&
                 ordered.map((order) => {
-                  return <Option key={order.name} value={order.id}>{`${order.id} ${order.name}`}</Option>
+                  return <Option key={order.name} value={order.id}>{`${order.id}. ${order.name}`}</Option>
                 })}
             </Select>
           </div>
@@ -117,7 +117,7 @@ const Admin = () => {
             <Tooltip />
           </AreaChart>
           <h1 className='text-2xl font-bold text-primary'>
-            Doanh thu {productInfo.name} trong năm {time.year}, tháng {time.month}
+            Doanh thu {productInfo.name} trong tháng {time.month}, năm {time.year}
           </h1>
         </div>
       </div>

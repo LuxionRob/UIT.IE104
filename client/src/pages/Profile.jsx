@@ -156,7 +156,7 @@ const Profile = () => {
           {user.history &&
             user.history.map((products, key) => {
               return (
-                <>
+                <div key={key}>
                   <div className='pl-4 font-bold text-primary'>
                     Ngày đặt hàng:{' '}
                     {new Date(products.date).getDate() +
@@ -171,7 +171,7 @@ const Profile = () => {
                     })
                     .reduce((prev, curr) => [prev, '', curr])}
                   <hr className='my-4' />
-                </>
+                </div>
               )
             })}
         </div>

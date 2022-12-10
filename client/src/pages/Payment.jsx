@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState, useContext } from 'react'
 import { Table, Typography } from 'antd'
 import { AiTwotoneDelete } from 'react-icons/ai'
 import { getUserById, updateUser } from '../api/user'
-import { getOrder, updateOrder } from '../api/order'
+import { getAllOrder, updateOrder } from '../api/ordered'
 import { AuthContext } from '../components/Auth'
 import { transformToVNCurrency } from '../utils'
 import { Link } from 'react-router-dom'
@@ -119,7 +119,7 @@ const Payment = () => {
 
   const fetchOrder = async () => {
     try {
-      const res = await getOrder()
+      const res = await getAllOrder()
       setOrder(res.data)
       return Promise.resolve()
     } catch (error) {

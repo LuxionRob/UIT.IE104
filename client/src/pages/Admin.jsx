@@ -9,8 +9,10 @@ const Admin = () => {
   const [productInfo, setProductInfo] = useState({})
   const [time, setTime] = useState({ year: 2022, month: 1 })
   const [timeLine, setTimeLine] = useState({})
+  const [isLoading, setisLoading] = useState(initialState)
   const router = useNavigate()
   const { Option } = Select
+
   const calculateIncomeYear = ({ id, type, name, price, rate, ordered }, { year, month }) => {
     if (ordered) {
       const timeline = ordered.map((order) => {
@@ -53,10 +55,12 @@ const Admin = () => {
 
   const handleOrder = async () => {
     try {
+      setisLoading(true)
       const res = await getAllOrder()
       setOrdered(res)
       setProductInfo(res[0])
       setTimeLine(calculateIncomeYear(res[0], time))
+      setisLoading(false)
     } catch (error) {
       console.warn(error)
     }
@@ -67,14 +71,18 @@ const Admin = () => {
   }, [])
 
   const handleChangeProduct = (value) => {
+    setisLoading(true)
     const product = ordered[value - 1]
     setProductInfo(product)
     setTimeLine(calculateIncomeYear(product, time))
+    setisLoading(false)
   }
   const onChangeTime = (date) => {
+    setisLoading(true)
     const newTime = { year: date.$y, month: date.$M + 1 }
     setTime(newTime)
     setTimeLine(calculateIncomeYear(productInfo, newTime))
+    setisLoading(false)
   }
 
   return (
@@ -111,6 +119,7 @@ const Admin = () => {
           </h1>
         </div>
       </div>
+      {isLoading && <Loading />}
     </div>
   )
 }

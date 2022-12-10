@@ -9,27 +9,8 @@ module.exports = [
     avatarImage: `http://localhost:3003/api/images/users/1`,
     password: '123456789',
     role: 'admin',
-    cart: [
-      {
-        id: 4,
-        type: 'Trà sữa',
-        name: 'Trà Đào Bưởi Hồng Trân Châu Baby',
-        price: '30000',
-        description: 'Trà sữa ngon tuyệt!',
-        productImage: `http://localhost:3003/api/images/products/4`,
-        quanity: 1,
-      },
-      {
-        id: 2,
-        type: 'Trà',
-        name: 'Trà Mận Hạt Sen',
-        price: '27000',
-        description: 'Trà sữa ngon tuyệt!',
-        productImage: 'http://localhost:3003/api/images/products/2',
-        rate: 4,
-        quanity: 1,
-      },
-    ],
+    cart: [],
+    history: [],
   },
   {
     id: 2,
@@ -42,6 +23,7 @@ module.exports = [
     password: '123456789',
     role: 'user',
     cart: [],
+    history: [],
   },
   {
     id: 3,
@@ -54,5 +36,6 @@ module.exports = [
     password: '123456789',
     role: 'user',
     cart: [],
+    history: [],
   },
 ]

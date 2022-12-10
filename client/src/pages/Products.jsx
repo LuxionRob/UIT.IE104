@@ -56,7 +56,7 @@ const Products = () => {
 
   return (
     <>
-      <div className='max-w-screen mx-64 xl:mx-8 lg:mx-4  mt-10'>
+      <div className='max-w-screen mx-64 xl:mx-8 lg:mx-4 mt-10'>
         <div className='flex justify-between mb-6'>
           <h1 className='text-2xl'>Sản phẩm</h1>
           <Select className='w-28' defaultValue={'Chọn loại'} onChange={onChangeFilter}>
@@ -69,7 +69,7 @@ const Products = () => {
             })}
           </Select>
         </div>
-        <div className='grid grid-cols-4 gap-6 w-full'>
+        <div className='grid grid-cols-4 gap-6 w-full sm:grid-cols-2'>
           {products &&
             products.map((product, index) => {
               return <ProductCard key={index} product={product} />

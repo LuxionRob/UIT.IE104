@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { ImMenu } from 'react-icons/im'
+import { AiOutlineClose } from 'react-icons/ai'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { AuthContext } from './Auth'
 import { imageWidthResponsive } from '../utils'
@@ -13,6 +14,7 @@ const nav = [
 const Header = () => {
   const { authenticatedAccount, signOut } = useContext(AuthContext)
   const [isAvatarDropdownShow, setAvatarIsDropdownShow] = useState(false)
+  const [isPopup, setIsPopUp] = useState(false)
   const ref = useRef(null)
 
   useEffect(() => {
@@ -24,8 +26,8 @@ const Header = () => {
     document.addEventListener('mousedown', handleClickOutside)
   }, [ref])
 
-  const onLogOut = () => {
-    signOut()
+  const onClickLogOut = () => {
+    setIsPopUp(true)
     setAvatarIsDropdownShow(false)
   }
 
@@ -121,7 +123,7 @@ const Header = () => {
                   <hr />
                   <button
                     className='button w-full rounded-none border-none bg-white py-2 pl-4 text-left'
-                    onClick={onLogOut}
+                    onClick={onClickLogOut}
                   >
                     Đăng xuất
                   </button>
@@ -161,6 +163,41 @@ const Header = () => {
           Sản phẩm
         </NavLink>
       </ul>
+      {isPopup && (
+        <div className=' fixed inset-0 z-10 flex items-center justify-center bg-black bg-opacity-10'>
+          <div className='shawdow-md relative flex h-3/10 w-3/10 flex-col items-center justify-center rounded-xl bg-slate-100 py-8 lg:w-8/10'>
+            <h1 className='text-center text-xl font-bold'>Đăng xuất</h1>
+            <section className='my-4 w-3/5 text-center'>Bạn có chăc chắn muốn đăng xuất?</section>
+            <div className='flex w-full justify-evenly'>
+              <button
+                onClick={() => {
+                  signOut()
+                  setIsPopUp(false)
+                }}
+                className='button basis-1/3 py-2 text-center'
+              >
+                Có
+              </button>
+              <button
+                onClick={() => {
+                  setIsPopUp(false)
+                }}
+                className='button-primary basis-1/3 py-2 text-center'
+              >
+                Không
+              </button>
+            </div>
+            <button
+              onClick={(e) => {
+                setIsPopUp(false)
+              }}
+              className='absolute top-4 right-4 text-3xl leading-none hover:text-red-500'
+            >
+              <AiOutlineClose />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

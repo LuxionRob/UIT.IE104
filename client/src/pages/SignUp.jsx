@@ -54,7 +54,10 @@ const Register = () => {
       setError(errors)
     } else {
       try {
-        const signUpRes = await signUp({ email: curEmail, password: curPassword })
+        const signUpRes = await signUp({
+          email: curEmail,
+          password: curPassword,
+        })
         const userInfo = {
           ...signUpRes.data,
           adderss: '',
@@ -86,11 +89,11 @@ const Register = () => {
   }
 
   return (
-    <div className='h-screen max-w-screen flex justify-center items-center'>
-      <div className='flex flex-col justify-center items-center border-gray-400 border shadow-md px-16 py-8 w-3/10 rounded-lg xl:w-9/10 sm:px-4'>
+    <div className='max-w-screen flex h-screen items-center justify-center'>
+      <div className='flex w-3/10 flex-col items-center justify-center rounded-lg border border-gray-400 px-16 py-8 shadow-md xl:w-9/10 sm:px-4'>
         <div>
-          <div className='flex justify-center items-center font-sans font-bold text-primary text-3xl'>FireTea.</div>
-          <h1 className='text-2xl text-center mt-2 mb-8'>Đăng ký</h1>
+          <div className='flex items-center justify-center font-sans text-3xl font-bold text-primary'>FireTea.</div>
+          <h1 className='mt-2 mb-8 text-center text-2xl'>Đăng ký</h1>
         </div>
         <input
           className='input my-1 w-full'
@@ -122,13 +125,13 @@ const Register = () => {
           value={curRePassword}
         />
         {error.rePassword && <span className='self-start text-red-500'>{error.rePassword}</span>}
-        <div className='flex flex-col justify-between items-center w-full mt-4'>
+        <div className='mt-4 flex w-full flex-col items-center justify-between'>
           <button onClick={handleSubmit} className='button-primary px-8 py-3 xl:px-4 xl:py-2'>
             Tạo tài khoản
           </button>
-          <hr className='bg-primary h-[2px] mt-8 w-5/10' />
-          <span className='mt-2 text-primary font-bold'>Bạn đã có tài khoản rồi?</span>
-          <Link to='/login' className='button px-4 py-2 mt-2'>
+          <hr className='mt-8 h-[2px] w-5/10 bg-primary' />
+          <span className='mt-2 font-bold text-primary'>Bạn đã có tài khoản rồi?</span>
+          <Link to='/login' className='button mt-2 px-4 py-2'>
             Đăng nhập
           </Link>
         </div>

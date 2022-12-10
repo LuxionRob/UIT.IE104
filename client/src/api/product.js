@@ -18,6 +18,15 @@ export const getPagedProduct = async (params) => {
   }
 }
 
+export const getProductWithCondition = async (params) => {
+  try {
+    const productInfo = await instance.get('/products', { params })
+    return Promise.resolve(productInfo)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
 export const getProductById = async (id) => {
   try {
     const productInfo = await instance.get(`/products/${id}`)

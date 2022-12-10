@@ -14,7 +14,10 @@ const Products = () => {
 
   const fetchProductData = async () => {
     try {
-      const productList = await getPagedProduct({ _page: paginationPage, _limit: '12' })
+      const productList = await getPagedProduct({
+        _page: paginationPage,
+        _limit: '12',
+      })
       setTotalProduct(productList.data.pagination._totalRows)
       setProducts(productList.data.data)
       return Promise.resolve()
@@ -27,7 +30,11 @@ const Products = () => {
 
   const fetchFilterProduct = async () => {
     try {
-      const productList = await getPagedProduct({ _page: paginationPage, _limit: '12', type: filterType })
+      const productList = await getPagedProduct({
+        _page: paginationPage,
+        _limit: '12',
+        type: filterType,
+      })
       setTotalProduct(productList.data.pagination._totalRows)
       setProducts(productList.data.data)
       return Promise.resolve()
@@ -56,8 +63,8 @@ const Products = () => {
 
   return (
     <>
-      <div className='max-w-screen mx-64 xl:mx-8 lg:mx-4 mt-10'>
-        <div className='flex justify-between mb-6'>
+      <div className='max-w-screen mx-64 mt-10 xl:mx-8 lg:mx-4'>
+        <div className='mb-6 flex justify-between'>
           <h1 className='text-2xl'>Sản phẩm</h1>
           <Select className='w-28' defaultValue={'Chọn loại'} onChange={onChangeFilter}>
             {typeOfProduct.map((type, index) => {
@@ -69,7 +76,7 @@ const Products = () => {
             })}
           </Select>
         </div>
-        <div className='grid grid-cols-4 gap-6 w-full sm:grid-cols-2'>
+        <div className='grid w-full grid-cols-4 gap-6 sm:grid-cols-2'>
           {products &&
             products.map((product, index) => {
               return <ProductCard key={index} product={product} />

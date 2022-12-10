@@ -1,15 +1,25 @@
 const AboutUs = () => {
   const members = [
     { name: 'Tri Bùi', link: 'https://www.facebook.com/LuxionRob' },
-    { name: 'Ánh Nguyệt', link: 'https://www.facebook.com/profile.php?id=100034575011574' },
+    {
+      name: 'Ánh Nguyệt',
+      link: 'https://www.facebook.com/profile.php?id=100034575011574',
+    },
     { name: 'Khánh Châu', link: 'https://www.facebook.com/bunbe.bong.378/' },
-    { name: 'Thanh Nhàn', class: 'object-top', link: 'https://www.facebook.com/NguyenThanhNhan78104' },
-    { name: 'Đức Luận', link: 'https://www.facebook.com/profile.php?id=100044166517726' },
+    {
+      name: 'Thanh Nhàn',
+      class: 'object-top',
+      link: 'https://www.facebook.com/NguyenThanhNhan78104',
+    },
+    {
+      name: 'Đức Luận',
+      link: 'https://www.facebook.com/profile.php?id=100044166517726',
+    },
   ]
 
   return (
-    <div className='px-64 mt-8'>
-      <h1 className='text-center mb-8 text-4xl text-green-500'>Thành viên</h1>
+    <div className='mt-8 px-64'>
+      <h1 className='mb-8 text-center text-4xl text-green-500'>Thành viên</h1>
       <div className='flex flex-wrap justify-around'>
         {members.map((member, index) => {
           const newClass = member.class ? member.class : ''
@@ -24,15 +34,15 @@ const AboutUs = () => {
                 width='333'
                 height='333'
               />
-              <span className='block text-center font-semibold hover:text-green-500 mt-4'> {member.name} </span>
+              <span className='mt-4 block text-center font-semibold hover:text-green-500'> {member.name} </span>
             </a>
           )
         })}
       </div>
 
       <div className='flex flex-col'>
-        <h1 className='text-4xl pt-8 text-green-500 text-center'>Về chúng tôi</h1>
-        <div className='flex justify-center pl-2 p-8 '>
+        <h1 className='pt-8 text-center text-4xl text-green-500'>Về chúng tôi</h1>
+        <div className='flex justify-center p-8 pl-2 '>
           <p className='text-black-500 text-justify'>
             FiveTea được thành lập vào năm 2019, bắt nguồn từ đam mê khởi nghiệp của chúng tôi. Ngay từ những ngày đầu
             tiên, mục tiêu của chúng tôi là có thể phục vụ và đem đến những món đồ uống chất lượng và an toàn cho mọi

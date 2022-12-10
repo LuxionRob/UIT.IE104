@@ -2,6 +2,7 @@ const fs = require('fs')
 const { faker } = require('@faker-js/faker')
 const userList = require('./data/users')
 const productList = require('./data/products')
+const orderedList = require('./data/order')
 
 function generateUserList() {
   userList.map((user) => {
@@ -17,12 +18,28 @@ function generateProductList() {
   return productList
 }
 
+function generateOrderedList() {
+  orderedList.map((product) => {
+    product.ordered = Array(30)
+      .fill(0)
+      .map((_) => {
+        return {
+          orderedAt: faker.date.past(1),
+          quanity: Math.floor(Math.random() * 10),
+        }
+      })
+  })
+  return orderedList
+}
+
 function start() {
   const users = generateUserList()
   const products = generateProductList()
+  const ordered = generateOrderedList()
   const db = {
     users,
     products,
+    ordered,
   }
 
   fs.writeFile('db.json', JSON.stringify(db), () => {

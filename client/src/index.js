@@ -12,6 +12,7 @@ import Products from './pages/Products'
 import ProductInfo from './pages/ProductInfo'
 import AboutUs from './pages/AboutUs'
 import NoPage from './pages/NoPage'
+import Admin from './pages/Admin'
 import PrivateRoute from './components/PrivateRoute'
 import Auth from './components/Auth'
 import './tailwind.css'
@@ -31,6 +32,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <Route path='/payment' element={<Payment />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/products/:id' element={<ProductInfo />} />
+            </Route>
+          </Route>
+          <Route path='/admin' element={<PrivateRoute />}>
+            <Route path='' element={<NoFooter />}>
+              <Route path='' element={<Admin />} />
             </Route>
           </Route>
           <Route path='/404' element={<NoFooter />}>

@@ -1,8 +1,8 @@
 import instance from './init'
 
-export const getOrder = async () => {
+export const getAllOrder = async () => {
   try {
-    const res = await instance.get('ordered').then((res) => res)
+    const res = await instance.get('/ordered').then((res) => res)
     return Promise.resolve(res)
   } catch (error) {
     return Promise.reject(error)

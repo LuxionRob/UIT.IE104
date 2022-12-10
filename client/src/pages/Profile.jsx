@@ -115,14 +115,14 @@ const Profile = () => {
                   className='input rounded-md'
                   name='phone-number'
                   id='phone-number'
-                  type='number'
+                  type='text'
                   placeholder='Số điện thoại'
                 />
               </div>
-              <button className='button-primary px-8' onClick={onSubmit}>
+              <button className='button-primary mt-2 px-8 py-2' onClick={onSubmit}>
                 Save
               </button>
-              <button className='button ml-1 px-4' onClick={onCancel}>
+              <button className='button ml-1 px-4 py-2' onClick={onCancel}>
                 Cancel
               </button>
             </form>
@@ -186,16 +186,16 @@ const Profile = () => {
       </div>
       {popUp && (
         <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-10'>
-          <div className='shawdow-md relative flex h-3/10 w-3/10 flex-col items-center justify-center rounded-xl border-2 bg-slate-100 py-8'>
+          <div className='shawdow-md relative flex h-3/10 w-3/10 flex-col items-center justify-center rounded-xl border-2 bg-slate-100 py-8 lg:w-8/10'>
             <h1 className='text-center text-xl font-bold'>Bạn có muốn hủy thay đổi không?</h1>
             <section className='mt-2'>Những thay đổi của bạn sẽ bị xóa!</section>
-            <div className='flex w-full justify-evenly'>
+            <div className='mt-4 flex w-full justify-evenly'>
               <button
                 onClick={() => {
                   setPopUp(false)
                   setIsUpdating(false)
                 }}
-                className='button w-1/3'
+                className='button w-1/3 py-2'
               >
                 Có
               </button>
@@ -203,7 +203,7 @@ const Profile = () => {
                 onClick={() => {
                   setPopUp(false)
                 }}
-                className='button-primary w-1/3'
+                className='button-primary w-1/3 py-2'
               >
                 Không
               </button>
@@ -212,7 +212,7 @@ const Profile = () => {
               onClick={() => {
                 setPopUp(false)
               }}
-              className='absolute top-4 right-4 text-3xl leading-none hover:text-primary'
+              className='absolute top-4 right-4 text-3xl leading-none hover:text-red-500'
             >
               <AiOutlineClose />
             </button>

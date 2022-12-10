@@ -2,16 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllProduct } from '../api/product'
 import Banner from '../components/Banner'
+import Loading from '../components/Loading'
 import ProductCard from '../components/ProductCard'
 const Home = () => {
   const [product, setproducts] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+
   useEffect(() => {
     fetch()
   }, [])
 
   const fetch = async () => {
     try {
+      setIsLoading(true)
       const res = await getAllProduct()
+      setIsLoading(false)
       setproducts(res.data)
       return Promise.resolve()
     } catch (error) {
@@ -21,7 +26,7 @@ const Home = () => {
   }
 
   return (
-    <div className='max-w-screen mx-64 mb-10 xl:mx-8 lg:mx-4 sm:mt-28'>
+    <div className='max-w-screen mx-64 mb-10 xl:mx-8 lg:mx-4 sm:mt-32'>
       {/* Banner */}
       <Banner imgSrc={'http://localhost:3003/api/images/banners/1'} />
 
@@ -42,6 +47,7 @@ const Home = () => {
       </div>
 
       <Banner imgSrc={'http://localhost:3003/api/images/banners/2'} />
+      {isLoading && <Loading />}
     </div>
   )
 }

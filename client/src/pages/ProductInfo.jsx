@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { AuthContext } from '../components/Auth'
 import ProductCard from '../components/ProductCard'
+import Loading from '../components/Loading'
 import { getProductById } from '../api/product'
 import { getProductWithCondition } from '../api/product'
 import { updateUser } from '../api/user'
@@ -14,17 +15,20 @@ const ProductInfo = () => {
   const [productInfo, setProductInfo] = useState(false)
   const [curPrice, setCurPrice] = useState(0)
   const [curQuanity, setCurQuanity] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
   const router = useNavigate()
   const { id } = useParams()
 
   const fetchProduct = async () => {
     try {
+      setIsLoading(true)
       const res = await getProductById(id)
       const productList = await getProductWithCondition({
         _page: 1,
         _limit: '4',
         type: res.data.type,
       })
+      setIsLoading(false)
       setProductInfo(res.data)
       setCurPrice(res.data.price)
       setRelatedProduct(productList.data.data)
@@ -50,6 +54,7 @@ const ProductInfo = () => {
 
   const addCart = async () => {
     try {
+      setIsLoading(true)
       const newProductInfo = { ...productInfo, quanity: curQuanity }
       const index = authenticatedAccount.cart.findIndex((item) => item.id === newProductInfo.id)
       if (index === -1) {
@@ -59,6 +64,7 @@ const ProductInfo = () => {
       }
       const newUser = { ...authenticatedAccount }
       const res = await updateUser(newUser)
+      setIsLoading(false)
       return Promise.resolve()
     } catch (error) {
       return Promise.reject(error)
@@ -73,6 +79,7 @@ const ProductInfo = () => {
       fetchProduct()
     }
   }, [])
+
   return (
     <div className='max-w-screen flex grow flex-col items-center px-64 xl:px-8 lg:px-4 sm:mt-32'>
       <div className='grid h-8/10 w-full grid-cols-4 lg:grid-cols-3'>
@@ -142,9 +149,13 @@ const ProductInfo = () => {
         </div>
       </div>
       <hr className='mt-8 h-[2px] w-7/10 bg-primary' />
-      <div className='mt-8 grid grid-cols-4 gap-8 sm:mt-2 sm:grid-cols-2'>
-        {relatedProduct?.length && relatedProduct.map((item) => <ProductCard key={item.id} product={item} />)}
+      <div className='mt-8 flex flex-col items-center'>
+        <h1 className='text-3xl font-bold text-primary'>Sản phẩm liên quan</h1>
+        <div className='mt-4 grid grid-cols-4 gap-8 sm:mt-2 sm:grid-cols-2'>
+          {relatedProduct?.length && relatedProduct.map((item) => <ProductCard key={item.id} product={item} />)}
+        </div>
       </div>
+      {isLoading && <Loading />}
     </div>
   )
 }

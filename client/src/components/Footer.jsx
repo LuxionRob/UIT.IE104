@@ -1,33 +1,32 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { FaFacebook, FaYoutube, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <div className='max-w-screen relative bottom-0 overflow-x-hidden pt-1 sm:mx-8'>
+    <div className='max-w-screen relative bottom-0 mt-8 overflow-x-hidden pt-1 sm:mx-8'>
       <hr className='mb-10 h-[1.5px] bg-primary' />
       <div className='grid w-full grid-cols-3 sm:grid-cols-1'>
         <div className='flex items-center justify-center sm:mb-4'>
-          <div className='text-center font-sans text-5xl font-black text-primary lg:text-3xl'>FiveTea.</div>
+          <div className='text-center font-sans text-5xl font-black text-primary lg:text-3xl'>FireTea.</div>
         </div>
         <div className='flex flex-col items-center sm:mb-4'>
           <div className='sm:flex sm:flex-col sm:items-center'>
-            <h4 className='ml-6 text-xl text-primary lg:text-lg sm:ml-0 sm:text-xl'>Địa chỉ liên hệ</h4>
+            <h4 className='text-xl font-semibold text-primary lg:text-lg sm:ml-0 sm:text-xl'>Địa chỉ liên hệ</h4>
             <div className='flex items-center pl-0'>
-              <div className='ml-2.5 sm:ml-0 sm:text-center'>
-                5/15, đường 106, phường Tăng Nhơn Phú A, thành phố Thủ Đức
-              </div>
+              <div className='sm:text-center'>5/15, đường 106, phường Tăng Nhơn Phú A, thành phố Thủ Đức</div>
             </div>
             <div className='flex items-center pl-0'>
-              <div className='ml-2.5'>Phone: 03-526-7814</div>
+              <span>Phone: 03-526-7814</span>
             </div>
             <a href='mailto:info@fiveTea.com' className='flex items-center justify-start'>
-              <span className='ml-2'>Email: info@fiveTea.com</span>
+              <span>Email: info@fiveTea.com</span>
             </a>
           </div>
         </div>
         <div className='ml-4 grid justify-center lg:grid-cols-1 lg:justify-start'>
           <div className='mb-2 flex flex-col items-start sm:mb-4 sm:items-center'>
-            <h4 className='text-left text-xl text-primary lg:text-lg'>Chính sách</h4>
+            <h4 className='text-left text-xl font-semibold text-primary lg:text-lg'>Chính sách</h4>
             <ul className='pl-0'>
               <li>Hình thức thanh toán</li>
               <li>Vận chuyển giao nhận</li>
@@ -49,7 +48,15 @@ const Footer = () => {
         </div>
       </div>
       <hr className='mt-10 h-[1.5px] bg-primary' />
-      <div className='p-6 text-center'>
+      <div className='mt-4 flex justify-center'>
+        <Link
+          to='about-us'
+          className='text-2xl font-bold text-primary hover:border-b-2 hover:border-primary active:text-[#4d8b54cc]'
+        >
+          Về chúng tôi
+        </Link>
+      </div>
+      <div className='mt-4 mb-6 text-center'>
         <p>Chúng tôi biết bạn có nhiều sự lựa chọn, cảm ơn vì đã chọn chúng tôi</p>
       </div>
     </div>

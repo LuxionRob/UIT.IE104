@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Pagination, Select } from 'antd'
+import Loading from '../components/Loading'
 import { getPagedProduct } from '../api/product'
 import ProductCard from '../components/ProductCard'
 
@@ -11,13 +12,16 @@ const Products = () => {
   const [paginationPage, setPaginationPage] = useState([1])
   const [totalProduct, setTotalProduct] = useState()
   const [filterType, setFilterType] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const fetchProductData = async () => {
     try {
+      setIsLoading(true)
       const productList = await getPagedProduct({
         _page: paginationPage,
         _limit: '12',
       })
+      setIsLoading(false)
       setTotalProduct(productList.data.pagination._totalRows)
       setProducts(productList.data.data)
       return Promise.resolve()
@@ -30,11 +34,13 @@ const Products = () => {
 
   const fetchFilterProduct = async () => {
     try {
+      setIsLoading(true)
       const productList = await getPagedProduct({
         _page: paginationPage,
         _limit: '12',
         type: filterType,
       })
+      setIsLoading(false)
       setTotalProduct(productList.data.pagination._totalRows)
       setProducts(productList.data.data)
       return Promise.resolve()
@@ -63,7 +69,7 @@ const Products = () => {
 
   return (
     <>
-      <div className='max-w-screen mx-64 mt-10 xl:mx-8 lg:mx-4'>
+      <div className='max-w-screen mx-64 mt-10 xl:mx-8 lg:mx-4 sm:mt-32'>
         <div className='mb-6 flex justify-between'>
           <h1 className='text-2xl'>Sản phẩm</h1>
           <Select className='w-28' defaultValue={'Chọn loại'} onChange={onChangeFilter}>
@@ -76,12 +82,15 @@ const Products = () => {
             })}
           </Select>
         </div>
-        <div className='grid w-full grid-cols-4 gap-6 sm:grid-cols-2'>
-          {products &&
-            products.map((product, index) => {
-              return <ProductCard key={index} product={product} />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className='grid w-full grid-cols-4 gap-6 sm:grid-cols-2'>
+            {products.map((product, index) => {
+              return <ProductCard key={index} product={product} isLoading={isLoading} />
             })}
-        </div>
+          </div>
+        )}
       </div>
       {totalProduct && (
         <Pagination

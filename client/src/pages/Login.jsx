@@ -1,35 +1,38 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../components/Auth'
+import Loading from '../components/Loading'
 const emailRegExp = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
 
 const Login = () => {
   const [curEmail, setCurEmail] = useState('nikalinhlan@nijigen.com')
   const [curPassword, setCurPassword] = useState('123456789')
   const [error, setError] = useState({})
-  const { login } = useContext(AuthContext)
+  const { login, isLoading } = useContext(AuthContext)
   const router = useNavigate()
 
   useEffect(() => {}, [])
   const onEmailChange = (e) => {
+    setError({})
     setCurEmail(e.target.value)
   }
   const onPasswordChange = (e) => {
+    setError({})
     setCurPassword(e.target.value)
   }
-  const validate = (email, password) => {
+  const validate = () => {
     const errors = { status: 'OK', email: '', password: '' }
-    if (!email) {
+    if (!curEmail) {
       errors.status = 'ERROR'
       errors.email = 'Email không được để trống!'
-    } else if (!emailRegExp.test(email)) {
+    } else if (!emailRegExp.test(curEmail)) {
       errors.status = 'ERROR'
       errors.email = 'Địa chỉ email không hợp lệ!'
     }
-    if (!password.length > 0) {
+    if (!curPassword.length > 0) {
       errors.status = 'ERROR'
       errors.password = 'Mật khẩu không được để trống!'
-    } else if (password.length < 6 || password.length > 24) {
+    } else if (curPassword.length < 6 || curPassword.length > 24) {
       errors.status = 'ERROR'
       errors.password = 'Mật khẩu phải có từ 6 đến 24 kí tự!'
     }
@@ -38,7 +41,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const errors = validate(curEmail, curPassword)
+    const errors = validate()
     if (errors.status === 'ERROR') {
       setError(errors)
     } else {
@@ -60,6 +63,10 @@ const Login = () => {
     }
   }
 
+  const handleBlur = () => {
+    const errors = validate()
+    setError(errors)
+  }
   return (
     <div className='max-w-screen flex h-screen items-center justify-center'>
       <div className='flex w-3/10 flex-col items-center justify-center rounded-lg border border-gray-400 px-16 py-8 shadow-md xl:w-7/10 lg:w-9/10 sm:px-4'>
@@ -74,6 +81,7 @@ const Login = () => {
           id='email'
           name='email'
           onChange={onEmailChange}
+          onBlur={handleBlur}
           value={curEmail}
         />
         {error.email && <span className='self-start text-red-500'>{error.email}</span>}
@@ -84,6 +92,7 @@ const Login = () => {
           id='password'
           name='password'
           onChange={onPasswordChange}
+          onBlur={handleBlur}
           value={curPassword}
         />
         {error.password && <span className='self-start text-red-500'>{error.password}</span>}
@@ -99,6 +108,7 @@ const Login = () => {
           </button>
         </div>
       </div>
+      {isLoading && <Loading type='solid' />}
     </div>
   )
 }

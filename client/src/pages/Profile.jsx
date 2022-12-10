@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
 import { AuthContext } from '../components/Auth'
 import ProductInfo from '../components/ProductInfo'
-import { getUserById, updateUser } from '../api/user'
+import { updateUser } from '../api/user'
 
 const Profile = () => {
   const [user, setUser] = useState({})
@@ -12,8 +12,8 @@ const Profile = () => {
   const phoneNumberRef = useRef()
   const [popUp, setPopUp] = useState(false)
   const [isUpdating, setIsUpdating] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const { authenticatedAccount } = useContext(AuthContext)
-  const navigate = useNavigate()
 
   useEffect(() => {
     setUser(authenticatedAccount)
@@ -38,6 +38,7 @@ const Profile = () => {
 
   const updateUserInfo = async () => {
     try {
+      setIsLoading(true)
       const newInfo = {
         ...user,
         name: nameRef.current.value,
@@ -46,6 +47,7 @@ const Profile = () => {
       }
       setUser(newInfo)
       const res = await updateUser(newInfo)
+      setIsLoading(false)
       return Promise.resolve(res)
     } catch (error) {
       return Promise.reject(error)
@@ -185,6 +187,7 @@ const Profile = () => {
           </div>
         </div>
       )}
+      {isLoading && <Loading />}
     </div>
   )
 }

@@ -79,7 +79,7 @@ const Header = () => {
                   setAvatarIsDropdownShow((isAvatarDropdownShow) => !isAvatarDropdownShow)
                 }}
                 width={imageWidthResponsive('avatar')}
-                className='cursor-pointer rounded-full object-contain'
+                className='h-[65px] w-[65px] cursor-pointer rounded-full bg-gray-300 object-contain lg:h-[55px] lg:w-[55px] sm:h-[45px] sm:w-[45px]'
                 src={authenticatedAccount.avatarImage}
                 alt={authenticatedAccount.name}
               />

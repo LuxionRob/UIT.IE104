@@ -10,11 +10,11 @@ const ProductCard = ({ product, className }) => {
       <span data-text={product.name} className='tooltip px-3 pt-2'>
         {stringCut(product.name)}
       </span>
-      <div className='mt-7 flex justify-between px-3 text-primary'>
-        <h2>{transformToVNCurrency(product.price)}</h2>
+      <div className='mt-4 flex items-center justify-between px-3 pb-3 text-primary lg:mt-2 lg:flex-col lg:px-0 sm:mt-1 sm:px-0'>
+        <h2 className='pl-3 text-3xl lg:self-start lg:text-left lg:text-xl'>{transformToVNCurrency(product.price)}</h2>
 
         <button
-          className='border-spacing-2 -translate-y-[12px] rounded-lg border-2 border-primary p-2 hover:bg-primary hover:text-white'
+          className='rounded-lg border-2 border-primary p-2 hover:bg-primary hover:text-white lg:mt-2 lg:w-full'
           to='/payment'
         >
           Đặt hàng

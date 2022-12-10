@@ -43,27 +43,27 @@ const Header = () => {
   }
 
   return (
-    <div className='px-64 xl:px-8 lg:px-4 h-fit sm:pt-4 sm:fixed sm:top-0 sm:left-0 sm:right-0 bg-white z-10 sm:shadow-sm'>
-      <div className='flex justify-between relative w-full'>
+    <div className='z-10 h-fit bg-white px-64 sm:fixed sm:top-0 sm:left-0 sm:right-0 sm:pt-4 sm:shadow-sm lg:px-4 xl:px-8'>
+      <div className='relative flex w-full justify-between'>
         <NavLink
           to='/'
-          className='flex justify-center items-center font-sans font-bold text-primary text-2xl sm:text-xl'
+          className='text-primary flex items-center justify-center font-sans text-2xl font-bold sm:text-xl'
         >
           FireTea.
         </NavLink>
-        <ul className='flex basis-1/2 grow xl:grow-0 xl:basis-1/3 ml-12 lg:m-0 sm:hidden'>
+        <ul className='ml-12 flex grow basis-1/2 sm:hidden lg:m-0 xl:grow-0 xl:basis-1/3'>
           {nav.map((item) => {
             return (
-              <NavLink key={item.name} to={item.path} className='navbar-item sm:leading-normal responsive'>
+              <NavLink key={item.name} to={item.path} className='navbar-item responsive sm:leading-normal'>
                 {item.name}
               </NavLink>
             )
           })}
         </ul>
 
-        <div className='flex items-center justify-end xl:grow basis-2/5'>
+        <div className='flex basis-2/5 items-center justify-end xl:grow'>
           <input
-            className='input sm:hidden h-9 rounded-full border-2 border-solid border-primary pl-4 shadow-primary shadow-md'
+            className='input border-primary shadow-primary h-9 rounded-full border-2 border-solid pl-4 shadow-md sm:hidden'
             type='text'
             placeholder='Bạn muốn uống gì...'
           />
@@ -71,22 +71,22 @@ const Header = () => {
             <AiOutlineSearch />
           </div>
           {authenticatedAccount ? (
-            <div className='ml-8 relative xl:ml-4'>
+            <div className='relative ml-8 xl:ml-4'>
               <img
                 onClick={() => {
                   setAvatarIsDropdownShow((isAvatarDropdownShow) => !isAvatarDropdownShow)
                 }}
-                width={window.innerWidth < 640 ? '45' : '65'}
-                className='object-contain rounded-full cursor-pointer'
+                width={imageWidthResponsive('avatar')}
+                className='h-[65px] w-[65px] cursor-pointer rounded-full bg-gray-300 object-contain sm:h-[45px] sm:w-[45px] lg:h-[55px] lg:w-[55px]'
                 src={authenticatedAccount.avatarImage}
                 alt={authenticatedAccount.name}
               />
               {isAvatarDropdownShow && (
                 <ul
                   ref={ref}
-                  className='z-20 absolute top-full right-0 w-64 shadow-lg bg-white border-2 border-gray-200 rounded-lg'
+                  className='absolute top-full right-0 z-20 w-64 rounded-lg border-2 border-gray-200 bg-white shadow-lg'
                 >
-                  <div className='pl-4 py-4'>
+                  <div className='py-4 pl-4'>
                     <h2 className='font-bold'>{authenticatedAccount.name}</h2>
                     <span className='font-normal capitalize'>{authenticatedAccount.role}</span>
                   </div>
@@ -94,14 +94,14 @@ const Header = () => {
                   <div>
                     <Link
                       to='/profile'
-                      className='button w-full bg-white rounded-none border-none pl-4 py-2 inline-block'
+                      className='button inline-block w-full rounded-none border-none bg-white py-2 pl-4'
                       onClick={() => setAvatarIsDropdownShow(false)}
                     >
                       Hồ sơ
                     </Link>
                     <Link
                       to='/payment'
-                      className='button w-full bg-white rounded-none border-none pl-4 py-2 inline-block'
+                      className='button inline-block w-full rounded-none border-none bg-white py-2 pl-4'
                       onClick={() => setAvatarIsDropdownShow(false)}
                     >
                       Thanh toán
@@ -109,7 +109,7 @@ const Header = () => {
                     {authenticatedAccount.role === 'admin' && (
                       <Link
                         to='/admin'
-                        className='button w-full bg-white rounded-none border-none pl-4 py-2 inline-block'
+                        className='button inline-block w-full rounded-none border-none bg-white py-2 pl-4'
                         onClick={() => setAvatarIsDropdownShow(false)}
                       >
                         Thống kê
@@ -118,7 +118,7 @@ const Header = () => {
                   </div>
                   <hr />
                   <button
-                    className='button w-full text-left bg-white rounded-none border-none pl-4 py-2'
+                    className='button w-full rounded-none border-none bg-white py-2 pl-4 text-left'
                     onClick={onLogOut}
                   >
                     Đăng xuất
@@ -129,7 +129,7 @@ const Header = () => {
           ) : (
             <Link
               to='/login'
-              className='ml-8 bg-primary py-2 px-4 rounded-lg text-white whitespace-nowrap sm:text-sm sm:px-2 sm:py-1'
+              className='bg-primary ml-8 whitespace-nowrap rounded-lg py-2 px-4 text-white sm:px-2 sm:py-1 sm:text-sm'
             >
               Đăng nhập
             </Link>
@@ -138,22 +138,22 @@ const Header = () => {
       </div>
       <input
         id='search-input'
-        className='transition-all delay-200 ease-linear p-0 pl-4 opacity-0 w-full h-0 m-0'
+        className='m-0 h-0 w-full p-0 pl-4 opacity-0 transition-all delay-200 ease-linear'
         type='text'
         placeholder='Bạn muốn uống gì...'
       />
-      <ul className='hidden sm:flex flex-col justify-center' id='navbar'>
-        <div className='flex justify-between items-center'>
-          <NavLink to='/' className='w-full inline-block text-primary h-8 font-semibold leading-loose'>
+      <ul className='hidden flex-col justify-center sm:flex' id='navbar'>
+        <div className='flex items-center justify-between'>
+          <NavLink to='/' className='text-primary inline-block h-8 w-full font-semibold leading-loose'>
             Trang chủ
           </NavLink>
-          <div className='mr-2 w-8 h-8 justify-center flex items-center' onClick={onMobileClick}>
+          <div className='mr-2 flex h-8 w-8 items-center justify-center' onClick={onMobileClick}>
             <ImMenu />
           </div>
         </div>
         <NavLink
           to='/products'
-          className='dropdown opacity-0 w-full text-primary font-semibold h-0 transition-all delay-200 ease-linear leading-loose'
+          className='dropdown text-primary h-0 w-full font-semibold leading-loose opacity-0 transition-all delay-200 ease-linear'
           onClick={cancelNavbar}
         >
           Sản phẩm

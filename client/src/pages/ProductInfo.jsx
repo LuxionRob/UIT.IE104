@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { AuthContext } from '../components/Auth'
 import { getProductById } from '../api/product'
@@ -62,17 +62,18 @@ const ProductInfo = () => {
   useEffect(() => {
     if (!productInfo) fetchProduct()
   }, [])
+
   return (
-    <div className='flex max-w-screen px-64 mb-16 grow'>
-      <div className='bg-gray-100 flex bg-opacity-25 p-4 w-full'>
+    <div className='max-w-screen mb-16 flex grow px-64'>
+      <div className='flex w-full bg-gray-100 bg-opacity-25 p-4'>
         <div>
           <img width='300' className='object-contain' src={productInfo.productImage} alt={productInfo.name} />
         </div>
         <div className='ml-8 grow'>
           <h1 className='text-xl'>{productInfo.name}</h1>
           <div className='flex'>
-            <span className='text-2xl text-primary border-b-2 border-primary'>{productInfo.rate}.0</span>
-            <div className='flex text-3xl ml-2'>
+            <span className='text-primary border-primary border-b-2 text-2xl'>{productInfo.rate}.0</span>
+            <div className='ml-2 flex text-3xl'>
               {Array(5)
                 .fill(0)
                 .map((item, index) => {
@@ -83,38 +84,45 @@ const ProductInfo = () => {
                 })}
             </div>
           </div>
-          <h2 className='text-4xl mt-8 text-primary font-semibold'>{transformToVNCurrency(curPrice)}</h2>
-          <div className='flex mt-8 w-64'>
+          <h2 className='text-primary mt-8 text-4xl font-semibold'>{transformToVNCurrency(curPrice)}</h2>
+          <div className='mt-8 flex w-64'>
             <span className='basis-5/10 grow'>Số lượng</span>
-            <div className='ml-16 flex basis-5/10 justify-between items-center'>
+            <div className='basis-5/10 ml-16 flex items-center justify-between'>
               <button
                 onClick={handleDecreaseQuanity}
                 disabled={curQuanity === 0 ? true : false}
-                className='button-primary flex justify-center items-center w-6 h-6 rounded-full'
+                className='button-primary flex h-6 w-6 items-center justify-center rounded-full'
               >
                 -
               </button>
               <input
                 onChange={handleQuanityChange}
-                className='py-0 px-2.5 border-2 border-primary rounded-lg w-10 text-center'
+                className='border-primary w-10 rounded-lg border-2 py-0 px-2.5 text-center'
                 value={curQuanity}
               />
               <button
                 onClick={handleIncreaseQuanity}
-                className='button-primary flex justify-center items-center w-6 h-6 rounded-full'
+                className='button-primary flex h-6 w-6 items-center justify-center rounded-full'
               >
                 +
               </button>
             </div>
           </div>
         </div>
-        <div className='flex flex-col h-full justify-evenly'>
+        <div className='flex h-full flex-col justify-evenly'>
           <button onClick={handleOnBuy} className='button-primary h-16 w-52'>
             Mua ngay
           </button>
           <button onClick={handleOnBuy} className='button-secondary text-primary  h-16 w-52'>
             Thêm vào giỏ hàng
           </button>
+        </div>
+      </div>
+      <hr className='w-7/10 bg-primary mt-8 h-[2px]' />
+      <div className='mt-8 flex flex-col items-center'>
+        <h1 className='text-primary text-3xl font-bold'>Sản phẩm liên quan</h1>
+        <div className='mt-4 grid grid-cols-4 gap-8 sm:mt-2 sm:grid-cols-2'>
+          {relatedProduct?.length && relatedProduct.map((item) => <ProductCard key={item.id} product={item} />)}
         </div>
       </div>
     </div>

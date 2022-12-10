@@ -36,6 +36,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/404' element={<NoFooter />}>
             <Route path='' element={<NoPage />} />
           </Route>
+          <Route path='*' element={<NoFooter />}>
+            <Route path='' element={<NoPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Auth>

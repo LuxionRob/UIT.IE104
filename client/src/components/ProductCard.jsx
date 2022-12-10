@@ -4,17 +4,17 @@ import { stringCut } from '../utils'
 
 const ProductCard = ({ product, className }) => {
   return (
-    <Link to={`/products/${product.id}`} className={`flex flex-col w-full hover:shadow-2xl ${className}`}>
+    <Link to={`/products/${product.id}`} className={`flex w-full flex-col hover:shadow-2xl ${className}`}>
       <img alt={product.name} className='w-full' src={product.productImage} />
-      <div className='h-px w-3/4 bg-primary mt-4 mx-auto' />
+      <div className='bg-primary mx-auto mt-4 h-px w-3/4' />
       <span data-text={product.name} className='tooltip px-3 pt-2'>
         {stringCut(product.name)}
       </span>
-      <div className='px-3 mt-7 flex justify-between text-primary'>
-        <h2>{product.price}</h2>
+      <div className='text-primary mt-4 flex items-center justify-between px-3 pb-3 sm:mt-1 sm:px-0 lg:mt-2 lg:flex-col'>
+        <h2 className='pl-3 text-3xl lg:self-start lg:text-left lg:text-xl'>{transformToVNCurrency(product.price)}</h2>
 
         <button
-          className='rounded-lg border-primary border-spacing-2 border-2 p-2 -translate-y-[12px] hover:text-white hover:bg-primary'
+          className='border-primary hover:bg-primary rounded-lg border-2 p-2 hover:text-white lg:mt-2 lg:w-full'
           to='/payment'
         >
           Đặt hàng

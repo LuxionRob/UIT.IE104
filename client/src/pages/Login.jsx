@@ -1,35 +1,38 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../components/Auth'
+import Loading from '../components/Loading'
 const emailRegExp = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
 
 const Login = () => {
   const [curEmail, setCurEmail] = useState('nikalinhlan@nijigen.com')
   const [curPassword, setCurPassword] = useState('123456789')
   const [error, setError] = useState({})
-  const { login } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { login, isLoading } = useContext(AuthContext)
+  const router = useNavigate()
 
   useEffect(() => {}, [])
   const onEmailChange = (e) => {
+    setError({})
     setCurEmail(e.target.value)
   }
   const onPasswordChange = (e) => {
+    setError({})
     setCurPassword(e.target.value)
   }
-  const validate = (email, password) => {
+  const validate = () => {
     const errors = { status: 'OK', email: '', password: '' }
-    if (!email) {
+    if (!curEmail) {
       errors.status = 'ERROR'
       errors.email = 'Email không được để trống!'
-    } else if (!emailRegExp.test(email)) {
+    } else if (!emailRegExp.test(curEmail)) {
       errors.status = 'ERROR'
       errors.email = 'Địa chỉ email không hợp lệ!'
     }
-    if (!password.length > 0) {
+    if (!curPassword.length > 0) {
       errors.status = 'ERROR'
-      errors.password = 'Mât khẩu không được để trống!'
-    } else if (password.length < 6 || password.length > 24) {
+      errors.password = 'Mật khẩu không được để trống!'
+    } else if (curPassword.length < 6 || curPassword.length > 24) {
       errors.status = 'ERROR'
       errors.password = 'Mật khẩu phải có từ 6 đến 24 kí tự!'
     }
@@ -38,7 +41,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const errors = validate(curEmail, curPassword)
+    const errors = validate()
     if (errors.status === 'ERROR') {
       setError(errors)
     } else {
@@ -58,12 +61,16 @@ const Login = () => {
     }
   }
 
+  const handleBlur = () => {
+    const errors = validate()
+    setError(errors)
+  }
   return (
-    <div className='h-screen max-w-screen flex justify-center items-center'>
-      <div className='flex flex-col justify-center items-center border-gray-400 border shadow-md px-16 py-8 w-3/10 rounded-lg xl:w-7/10 lg:w-9/10 sm:px-4'>
+    <div className='max-w-screen flex h-screen items-center justify-center'>
+      <div className='w-3/10 xl:w-7/10 lg:w-9/10 flex flex-col items-center justify-center rounded-lg border border-gray-400 px-16 py-8 shadow-md sm:px-4'>
         <div>
-          <div className='flex justify-center items-center font-sans font-bold text-primary text-3xl'>FireTea.</div>
-          <h1 className='text-2xl text-center mt-2 mb-8'>Đăng nhập</h1>
+          <div className='text-primary flex items-center justify-center font-sans text-3xl font-bold'>FireTea.</div>
+          <h1 className='mt-2 mb-8 text-center text-2xl'>Đăng nhập</h1>
         </div>
         <input
           className='input my-1 w-full'
@@ -72,6 +79,7 @@ const Login = () => {
           id='email'
           name='email'
           onChange={onEmailChange}
+          onBlur={handleBlur}
           value={curEmail}
         />
         {error.email && <span className='self-start text-red-500'>{error.email}</span>}
@@ -82,13 +90,14 @@ const Login = () => {
           id='password'
           name='password'
           onChange={onPasswordChange}
+          onBlur={handleBlur}
           value={curPassword}
         />
         {error.password && <span className='self-start text-red-500'>{error.password}</span>}
         {/* <Link to='/forgot-password' className='text-primary self-start font-bold mt-2 mb-4'>
           Quên mật khẩu
         </Link> */}
-        <div className='flex justify-between items-center w-full mt-2'>
+        <div className='mt-2 flex w-full items-center justify-between'>
           <Link to='/sign-up' className='text-primary hover:bg-gray-300 hover:shadow-gray-300'>
             Tạo tài khoản
           </Link>
@@ -97,6 +106,7 @@ const Login = () => {
           </button>
         </div>
       </div>
+      {isLoading && <Loading type='solid' />}
     </div>
   )
 }

@@ -1,47 +1,52 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../components/Auth'
+import Loading from '../components/Loading'
 import { addUser } from '../api/user'
+
 const emailRegExp = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
 
-const Register = () => {
+const SignUp = () => {
   const [curEmail, setCurEmail] = useState('nikalinhlan3@nijigen.com')
   const [curPassword, setCurPassword] = useState('12315434656')
   const [curRePassword, setRePassword] = useState('12315434656')
   const [error, setError] = useState({})
-  const { signUp } = useContext(AuthContext)
+  const { signUp, isLoading } = useContext(AuthContext)
   const navigate = useNavigate()
 
   useEffect(() => {}, [])
   const onEmailChange = (e) => {
+    setError({})
     setCurEmail(e.target.value)
   }
   const onPasswordChange = (e) => {
+    setError({})
     setCurPassword(e.target.value)
   }
   const onRePasswordChange = (e) => {
+    setError({})
     setRePassword(e.target.value)
   }
-  const validate = (email, password, rePassword) => {
+  const validate = () => {
     const errors = { status: 'OK', email: '', password: '', rePassword: '' }
-    if (!email) {
+    if (!curEmail) {
       errors.status = 'ERROR'
       errors.email = 'Email không được để trống!'
-    } else if (!emailRegExp.test(email)) {
+    } else if (!emailRegExp.test(curEmail)) {
       errors.status = 'ERROR'
       errors.email = 'Địa chỉ email không hợp lệ!'
     }
-    if (!password.length > 0) {
+    if (!curPassword.length > 0) {
       errors.status = 'ERROR'
       errors.password = 'Mật khẩu không được để trống!'
-    } else if (password.length < 6 || password.length > 24) {
+    } else if (curPassword.length < 6 || curPassword.length > 24) {
       errors.status = 'ERROR'
       errors.password = 'Mật khẩu phải có từ 6 đến 24 kí tự!'
     }
-    if (!rePassword.length > 0) {
+    if (!curRePassword.length > 0) {
       errors.status = 'ERROR'
       errors.rePassword = 'Mật khẩu không được để trống!'
-    } else if (password !== rePassword) {
+    } else if (curPassword !== curRePassword) {
       errors.status = 'ERROR'
       errors.rePassword = 'Mật khẩu nhập lại không giống nhau'
     }
@@ -49,7 +54,7 @@ const Register = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const errors = validate(curEmail, curPassword, curRePassword)
+    const errors = validate()
     if (errors.status === 'ERROR') {
       setError(errors)
     } else {
@@ -66,7 +71,6 @@ const Register = () => {
           name: '',
         }
         await addUser(userInfo)
-        alert('Sign up success! Go to login to continue!')
         navigate('/login')
       } catch (res) {
         if (Number.parseInt(res.response.status) === 422) {
@@ -84,13 +88,16 @@ const Register = () => {
       }
     }
   }
-
+  const handleBlur = () => {
+    const errors = validate()
+    setError(errors)
+  }
   return (
-    <div className='h-screen max-w-screen flex justify-center items-center'>
-      <div className='flex flex-col justify-center items-center border-gray-400 border shadow-md px-16 py-8 w-3/10 rounded-lg xl:w-9/10 sm:px-4'>
+    <div className='max-w-screen flex h-screen items-center justify-center'>
+      <div className='w-3/10 xl:w-9/10 flex flex-col items-center justify-center rounded-lg border border-gray-400 px-16 py-8 shadow-md sm:px-4'>
         <div>
-          <div className='flex justify-center items-center font-sans font-bold text-primary text-3xl'>FireTea.</div>
-          <h1 className='text-2xl text-center mt-2 mb-8'>Đăng ký</h1>
+          <div className='text-primary flex items-center justify-center font-sans text-3xl font-bold'>FireTea.</div>
+          <h1 className='mt-2 mb-8 text-center text-2xl'>Đăng ký</h1>
         </div>
         <input
           className='input my-1 w-full'
@@ -99,6 +106,7 @@ const Register = () => {
           id='email'
           name='email'
           onChange={onEmailChange}
+          onBlur={handleBlur}
           value={curEmail}
         />
         {error.email && <span className='self-start text-red-500'>{error.email}</span>}
@@ -109,6 +117,7 @@ const Register = () => {
           id='password'
           name='password'
           onChange={onPasswordChange}
+          onBlur={handleBlur}
           value={curPassword}
         />
         {error.password && <span className='self-start text-red-500'>{error.password}</span>}
@@ -119,21 +128,27 @@ const Register = () => {
           id='re-password'
           name='re-password'
           onChange={onRePasswordChange}
+          onBlur={handleBlur}
           value={curRePassword}
         />
         {error.rePassword && <span className='self-start text-red-500'>{error.rePassword}</span>}
-        <div className='flex flex-col justify-between items-center w-full mt-4'>
-          <button onClick={handleSubmit} className='button-primary px-8 py-3 xl:px-4 xl:py-2'>
+        <div className='mt-4 flex w-full flex-col items-center justify-between'>
+          <button
+            onClick={handleSubmit}
+            className='button-primary px-8 py-3 xl:px-4 xl:py-2'
+            disabled={error.status === 'ERROR' ? true : false}
+          >
             Tạo tài khoản
           </button>
-          <hr className='bg-primary h-[2px] mt-8 w-5/10' />
-          <span className='mt-2 text-primary font-bold'>Bạn đã có tài khoản rồi?</span>
-          <Link to='/login' className='button px-4 py-2 mt-2'>
+          <hr className='bg-primary w-5/10 mt-8 h-[2px]' />
+          <span className='text-primary mt-2 font-bold'>Bạn đã có tài khoản rồi?</span>
+          <Link to='/login' className='button mt-2 px-4 py-2'>
             Đăng nhập
           </Link>
         </div>
       </div>
+      {isLoading && <Loading type='solid' />}
     </div>
   )
 }
-export default Register
+export default SignUp

@@ -3,10 +3,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
 import { AuthContext } from '../components/Auth'
 import ProductInfo from '../components/ProductInfo'
-import { updateUser } from '../api/user'
+import { getUserById, updateUser } from '../api/user'
 
 const Profile = () => {
   const [user, setUser] = useState({})
+  const [userInfo, setUserInfo] = useState({})
   const nameRef = useRef()
   const addressRef = useRef()
   const phoneNumberRef = useRef()
@@ -15,7 +16,18 @@ const Profile = () => {
   const [isLoading, setIsLoading] = useState(false)
   const { authenticatedAccount } = useContext(AuthContext)
 
+  const fetchUser = async () => {
+    try {
+      const res = await getUserById(authenticatedAccount.id)
+      setUserInfo(res.data)
+      return Promise.resolve()
+    } catch (error) {
+      return Promise.reject({ 2: error })
+    }
+  }
+
   useEffect(() => {
+    fetchUser()
     setUser(authenticatedAccount)
   }, [])
 
@@ -130,18 +142,38 @@ const Profile = () => {
           <div className='self-start'>
             <span className='mt-8 text-xl font-bold text-black'>Thông tin cá nhân</span>
             <ul>
-              <li>Giới tính: {user.gender}</li>
-              <li>Địa chỉ: {user.address}</li>
-              <li>Số điện thoại: {user.phoneNumber}</li>
+              <li key={0}>Giới tính: {user.gender}</li>
+              <li key={1}>Địa chỉ: {user.address}</li>
+              <li key={2}>Số điện thoại: {user.phoneNumber}</li>
             </ul>
           </div>
         )}
       </div>
       <div className='col-span-2 ml-16 flex flex-col rounded-md border-2 border-slate-200 bg-opacity-50 sm:ml-0'>
-        <h1 className='w-full py-4 text-center font-extrabold'>Lịch sử mua hàng</h1>
+        <h1 className='w-full py-4 text-center text-2xl font-bold'>Lịch sử mua hàng</h1>
         <hr />
         <div className='my-4'>
-          {user.history && user.history.map((product) => <ProductInfo key={product.id} productInfo={product} />)}
+          {user.history &&
+            user.history.map((products, key) => {
+              return (
+                <>
+                  <div className='pl-4 font-bold text-primary'>
+                    Ngày đặt hàng:{' '}
+                    {new Date(products.date).getDate() +
+                      '/' +
+                      (new Date(products.date).getMonth() + 1) +
+                      '/' +
+                      new Date(products.date).getFullYear()}
+                  </div>
+                  {products.cart
+                    .map((product, index) => {
+                      return <ProductInfo key={index + key} productInfo={product} />
+                    })
+                    .reduce((prev, curr) => [prev, '', curr])}
+                  <hr className='my-4' />
+                </>
+              )
+            })}
         </div>
         {user.history && user.history?.length === 0 && (
           <div className='flex grow flex-col items-center justify-center'>

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import DefaultLayout from './layouts/defaults'
+import NoFooter from './layouts/NoFooter'
 import Home from './pages/Home'
 import Payment from './pages/Payment'
 import Profile from './pages/Profile'
@@ -31,7 +32,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <Route path='/profile' element={<Profile />} />
               <Route path='/products/:id' element={<ProductInfo />} />
             </Route>
-            <Route path='/404' element={<NoPage />} />
+          </Route>
+          <Route path='/404' element={<NoFooter />}>
+            <Route path='' element={<NoPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,20 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { stringCut } from '../utils'
+import { transformToVNCurrency, stringCut } from '../utils'
 
 const ProductCard = ({ product, className }) => {
   return (
-    <Link to={`/products/${product.id}`} className={`flex flex-col w-full hover:shadow-2xl ${className}`}>
+    <Link to={`/products/${product.id}`} className={`flex w-full flex-col hover:shadow-2xl ${className}`}>
       <img alt={product.name} className='w-full' src={product.productImage} />
-      <div className='h-px w-3/4 bg-primary mt-4 mx-auto' />
+      <div className='mx-auto mt-4 h-px w-3/4 bg-primary' />
       <span data-text={product.name} className='tooltip px-3 pt-2'>
         {stringCut(product.name)}
       </span>
-      <div className='px-3 mt-7 flex justify-between text-primary'>
-        <h2>{product.price}</h2>
+      <div className='mt-7 flex justify-between px-3 text-primary'>
+        <h2>{transformToVNCurrency(product.price)}</h2>
 
         <button
-          className='rounded-lg border-primary border-spacing-2 border-2 p-2 -translate-y-[12px] hover:text-white hover:bg-primary'
+          className='border-spacing-2 -translate-y-[12px] rounded-lg border-2 border-primary p-2 hover:bg-primary hover:text-white'
           to='/payment'
         >
           Đặt hàng

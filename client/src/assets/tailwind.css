@@ -10,28 +10,28 @@
 
 @layer components {
   .navbar-item {
-    @apply text-primary ml-6 px-6  leading-[6rem] whitespace-nowrap w-fit text-lg lg:px-2 lg:ml-2;
+    @apply ml-6 w-fit whitespace-nowrap  px-6 text-lg leading-[6rem] text-primary lg:ml-2 lg:px-2;
   }
   .navbar-item:hover {
-    @apply text-white bg-primary;
+    @apply bg-primary text-white;
   }
   .navbar-item.active {
-    @apply relative sm:text-primary sm:bg-none;
+    @apply relative sm:bg-none sm:text-primary;
   }
   .navbar-item.active::after {
     content: '';
-    @apply absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-5 h-1 w-16  bg-primary rounded-xl;
+    @apply absolute bottom-1/2 left-1/2 h-1 w-16 -translate-x-1/2 translate-y-5  rounded-xl bg-primary;
   }
   .responsive .dropdown {
-    @apply inline-block opacity-100 h-8;
+    @apply inline-block h-8 opacity-100;
   }
   #search-input.search {
-    @apply w-full my-4 opacity-100 h-9 rounded-full grow border-2 border-solid border-primary shadow-primary shadow-md;
+    @apply my-4 h-9 w-full grow rounded-full border-2 border-solid border-primary opacity-100 shadow-md shadow-primary;
   }
 }
 
 @layer utilities {
   .navbar-item.responsive {
-    @apply text-primary bg-white;
+    @apply bg-white text-primary;
   }
 }

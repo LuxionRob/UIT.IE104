@@ -8,7 +8,7 @@ const Login = () => {
   const [curPassword, setCurPassword] = useState('123456789')
   const [error, setError] = useState({})
   const { login } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const router = useNavigate()
 
   useEffect(() => {}, [])
   const onEmailChange = (e) => {
@@ -28,7 +28,7 @@ const Login = () => {
     }
     if (!password.length > 0) {
       errors.status = 'ERROR'
-      errors.password = 'Mât khẩu không được để trống!'
+      errors.password = 'Mật khẩu không được để trống!'
     } else if (password.length < 6 || password.length > 24) {
       errors.status = 'ERROR'
       errors.password = 'Mật khẩu phải có từ 6 đến 24 kí tự!'
@@ -43,10 +43,12 @@ const Login = () => {
       setError(errors)
     } else {
       try {
-        const resLogin = await login({ email: curEmail, password: curPassword })
-        navigate('/')
+        const resLogin = await login({
+          email: curEmail,
+          password: curPassword,
+        })
+        router('/')
       } catch (res) {
-        console.log(res)
         if (res.response.data?.email) {
           errors.email = res.response.data?.email
           setError(errors)
@@ -59,11 +61,11 @@ const Login = () => {
   }
 
   return (
-    <div className='h-screen max-w-screen flex justify-center items-center'>
-      <div className='flex flex-col justify-center items-center border-gray-400 border shadow-md px-16 py-8 w-3/10 rounded-lg xl:w-7/10 lg:w-9/10 sm:px-4'>
+    <div className='max-w-screen flex h-screen items-center justify-center'>
+      <div className='flex w-3/10 flex-col items-center justify-center rounded-lg border border-gray-400 px-16 py-8 shadow-md xl:w-7/10 lg:w-9/10 sm:px-4'>
         <div>
-          <div className='flex justify-center items-center font-sans font-bold text-primary text-3xl'>FireTea.</div>
-          <h1 className='text-2xl text-center mt-2 mb-8'>Đăng nhập</h1>
+          <div className='flex items-center justify-center font-sans text-3xl font-bold text-primary'>FireTea.</div>
+          <h1 className='mt-2 mb-8 text-center text-2xl'>Đăng nhập</h1>
         </div>
         <input
           className='input my-1 w-full'
@@ -88,7 +90,7 @@ const Login = () => {
         {/* <Link to='/forgot-password' className='text-primary self-start font-bold mt-2 mb-4'>
           Quên mật khẩu
         </Link> */}
-        <div className='flex justify-between items-center w-full mt-2'>
+        <div className='mt-2 flex w-full items-center justify-between'>
           <Link to='/sign-up' className='text-primary hover:bg-gray-300 hover:shadow-gray-300'>
             Tạo tài khoản
           </Link>

@@ -12,3 +12,28 @@ export function stringCut(string) {
 
 export const transformToVNCurrency = (number) =>
   new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number)
+
+export const imageWidthResponsive = (type) => {
+  const portWidth = window.innerWidth
+  if (type === 'avatar') {
+    if (portWidth > 1023) {
+      return 65
+    }
+    if (portWidth <= 1023) {
+      return 55
+    }
+    if (portWidth <= 639) {
+      return 45
+    }
+  } else if (type === 'product') {
+    if (portWidth > 1023) {
+      return 300
+    }
+    if (portWidth <= 1023) {
+      return 200
+    }
+    if (portWidth <= 639) {
+      return 150
+    }
+  }
+}

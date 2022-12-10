@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         primary: '#4d8b54',
       },
+      fontSize: {
+        '2xs': ['10px', '14px'],
+      },
       spacing: {
         '1/10': '10%',
         '2/10': '20%',

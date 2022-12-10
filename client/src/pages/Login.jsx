@@ -60,14 +60,9 @@ const Login = () => {
 
   return (
     <div className='h-screen max-w-screen flex justify-center items-center'>
-      <div className='flex flex-col justify-center items-center border-gray-400 border shadow-md px-16 py-8 w-3/10 rounded-lg'>
+      <div className='flex flex-col justify-center items-center border-gray-400 border shadow-md px-16 py-8 w-3/10 rounded-lg xl:w-7/10 lg:w-9/10 sm:px-4'>
         <div>
-          <img
-            src='http://localhost:3003/api/images/logo'
-            alt='Logo'
-            className='object-contain object-center'
-            width='200'
-          />
+          <div className='flex justify-center items-center font-sans font-bold text-primary text-3xl'>FireTea.</div>
           <h1 className='text-2xl text-center mt-2 mb-8'>Đăng nhập</h1>
         </div>
         <input
@@ -93,11 +88,11 @@ const Login = () => {
         {/* <Link to='/forgot-password' className='text-primary self-start font-bold mt-2 mb-4'>
           Quên mật khẩu
         </Link> */}
-        <div className='flex justify-between items-center w-full'>
+        <div className='flex justify-between items-center w-full mt-2'>
           <Link to='/sign-up' className='text-primary hover:bg-gray-300 hover:shadow-gray-300'>
             Tạo tài khoản
           </Link>
-          <button onClick={handleSubmit} className='text-white w-32 text-center rounded-lg py-1 bg-primary'>
+          <button onClick={handleSubmit} className='button-primary px-4 py-2'>
             Đăng nhập
           </button>
         </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getPagedProduct } from '../api/product'
+import { getAllProduct } from '../api/product'
 import Banner from '../components/Banner'
 import ProductCard from '../components/ProductCard'
 const Home = () => {
@@ -11,8 +11,8 @@ const Home = () => {
 
   const fetch = async () => {
     try {
-      const res = await getPagedProduct({ _page: 1, _limit: 10 })
-      setproducts(res.data.data)
+      const res = await getAllProduct()
+      setproducts(res.data)
       return Promise.resolve()
     } catch (error) {
       console.log(error)
@@ -21,7 +21,7 @@ const Home = () => {
   }
 
   return (
-    <div className='max-w-screen mx-64 mb-10'>
+    <div className='max-w-screen mx-64 xl:mx-8 lg:mx-4 mb-10 sm:mt-28'>
       {/* Banner */}
       <Banner imgSrc={'http://localhost:3003/api/images/banners/1'} />
 
@@ -29,23 +29,19 @@ const Home = () => {
 
       <div className='mt-10 text-2xl mx-auto mb-10'>Sản phẩm mới</div>
 
-      <div className='grid grid-cols-4 gap-6'>
+      <div className='grid grid-cols-4 sm:grid-cols-2 gap-6'>
         {product &&
           product.splice(0, 4).map((product, index) => <ProductCard key={index} product={product}></ProductCard>)}
       </div>
 
       <div className='mt-10 text-2xl mx-auto mb-10'>Sản phẩm bán chạy</div>
 
-      <div className='grid grid-cols-4 gap-6'>
+      <div className='grid grid-cols-4 sm:grid-cols-2 gap-6'>
         {product &&
           product.splice(5, 4).map((product, index) => <ProductCard key={index} product={product}></ProductCard>)}
       </div>
 
-      <div className='my-0 mx-auto max-w-[1200px] mb-32'>
-        <Link to='/products'>
-          <img className='my-0 mx-auto mt-10 rounded-xl' src='http://localhost:3003/api/images/banners/2' alt='' />
-        </Link>
-      </div>
+      <Banner imgSrc={'http://localhost:3003/api/images/banners/2'} />
     </div>
   )
 }

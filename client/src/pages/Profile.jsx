@@ -72,8 +72,8 @@ const Profile = () => {
   }
 
   return (
-    <div className='flex max-w-screen px-64 mb-16 grow'>
-      <div className='flex basis-1/3 flex-col items-center'>
+    <div className='px-64 xl:px-8 lg:px-4 sm:pt-4 sm:mt-28 grid grid-cols-3 sm:grid-cols-1 mb-16'>
+      <div className='flex flex-col items-center mb-8'>
         <img width='300' className='object-contain rounded-full' src={user.avatarImage} alt='avatar' />
         <span className='text-primary self-start font-bold text-2xl mt-8'>{user.name}</span>
         <div className='w-full'>
@@ -135,7 +135,7 @@ const Profile = () => {
           </div>
         )}
       </div>
-      <div className='ml-16 border-2 border-slate-200 w-full bg-opacity-50 rounded-md flex flex-col'>
+      <div className='ml-16 sm:ml-0 border-2 border-slate-200 bg-opacity-50 rounded-md flex flex-col col-span-2'>
         <h1 className='w-full py-4 text-center font-extrabold'>Lịch sử mua hàng</h1>
         <hr />
         <div className='my-4'>

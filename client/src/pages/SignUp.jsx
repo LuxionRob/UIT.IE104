@@ -87,14 +87,9 @@ const Register = () => {
 
   return (
     <div className='h-screen max-w-screen flex justify-center items-center'>
-      <div className='flex flex-col justify-center items-center border-gray-400 border shadow-md px-16 py-8 w-3/10 rounded-lg'>
+      <div className='flex flex-col justify-center items-center border-gray-400 border shadow-md px-16 py-8 w-3/10 rounded-lg xl:w-9/10 sm:px-4'>
         <div>
-          <img
-            src='http://localhost:3003/api/images/logo'
-            alt='Logo'
-            className='object-contain object-center'
-            width='200'
-          />
+          <div className='flex justify-center items-center font-sans font-bold text-primary text-3xl'>FireTea.</div>
           <h1 className='text-2xl text-center mt-2 mb-8'>Đăng ký</h1>
         </div>
         <input
@@ -127,12 +122,16 @@ const Register = () => {
           value={curRePassword}
         />
         {error.rePassword && <span className='self-start text-red-500'>{error.rePassword}</span>}
-        <button onClick={handleSubmit} className='mt-4 text-white w-32 text-center rounded-lg py-1 bg-primary'>
-          Tạo tài khoản
-        </button>
-        <Link to='/login' className='mt-4 text-primary w-32 text-center'>
-          Đăng nhập
-        </Link>
+        <div className='flex flex-col justify-between items-center w-full mt-4'>
+          <button onClick={handleSubmit} className='button-primary px-8 py-3 xl:px-4 xl:py-2'>
+            Tạo tài khoản
+          </button>
+          <hr className='bg-primary h-[2px] mt-8 w-5/10' />
+          <span className='mt-2 text-primary font-bold'>Bạn đã có tài khoản rồi?</span>
+          <Link to='/login' className='button px-4 py-2 mt-2'>
+            Đăng nhập
+          </Link>
+        </div>
       </div>
     </div>
   )

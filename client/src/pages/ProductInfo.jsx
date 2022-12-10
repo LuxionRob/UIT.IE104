@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { AuthContext } from '../components/Auth'
 import ProductCard from '../components/ProductCard'
+import Loading from '../components/Loading'
 import { getProductById } from '../api/product'
 import { getProductWithCondition } from '../api/product'
 import { updateUser } from '../api/user'
@@ -14,17 +15,20 @@ const ProductInfo = () => {
   const [productInfo, setProductInfo] = useState(false)
   const [curPrice, setCurPrice] = useState(0)
   const [curQuanity, setCurQuanity] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
   const router = useNavigate()
   const { id } = useParams()
 
   const fetchProduct = async () => {
     try {
+      setIsLoading(true)
       const res = await getProductById(id)
       const productList = await getProductWithCondition({
         _page: 1,
         _limit: '4',
         type: res.data.type,
       })
+      setIsLoading(false)
       setProductInfo(res.data)
       setCurPrice(res.data.price)
       setRelatedProduct(productList.data.data)
@@ -50,6 +54,7 @@ const ProductInfo = () => {
 
   const addCart = async () => {
     try {
+      setIsLoading(true)
       const newProductInfo = { ...productInfo, quanity: curQuanity }
       const index = authenticatedAccount.cart.findIndex((item) => item.id === newProductInfo.id)
       if (index === -1) {
@@ -59,6 +64,7 @@ const ProductInfo = () => {
       }
       const newUser = { ...authenticatedAccount }
       const res = await updateUser(newUser)
+      setIsLoading(false)
       return Promise.resolve()
     } catch (error) {
       return Promise.reject(error)
@@ -149,6 +155,7 @@ const ProductInfo = () => {
           {relatedProduct?.length && relatedProduct.map((item) => <ProductCard key={item.id} product={item} />)}
         </div>
       </div>
+      {isLoading && <Loading />}
     </div>
   )
 }

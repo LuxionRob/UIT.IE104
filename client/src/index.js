@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import DefaultLayout from './layouts/defaults'
 import NoFooter from './layouts/NoFooter'
 import Home from './pages/Home'
@@ -14,7 +15,6 @@ import NoPage from './pages/NoPage'
 import PrivateRoute from './components/PrivateRoute'
 import Auth from './components/Auth'
 import './tailwind.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -36,9 +36,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/404' element={<NoFooter />}>
             <Route path='' element={<NoPage />} />
           </Route>
-          <Route path='*' element={<NoFooter />}>
-            <Route path='' element={<NoPage />} />
-          </Route>
+          <Route path='*' element={<Navigate to='/404' />} />
         </Routes>
       </BrowserRouter>
     </Auth>

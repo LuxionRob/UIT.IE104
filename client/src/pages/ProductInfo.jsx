@@ -6,18 +6,29 @@ import ProductCard from '../components/ProductCard'
 import Loading from '../components/Loading'
 import { getProductById } from '../api/product'
 import { getProductWithCondition } from '../api/product'
-import { updateUser } from '../api/user'
 import { transformToVNCurrency, imageWidthResponsive } from '../utils'
+import { updateUser, getUserById } from '../api/user'
 
 const ProductInfo = () => {
   const { authenticatedAccount } = useContext(AuthContext)
   const [relatedProduct, setRelatedProduct] = useState({})
   const [productInfo, setProductInfo] = useState(false)
   const [curPrice, setCurPrice] = useState(0)
+  const [userInfo, setUserInfo] = useState(false)
   const [curQuanity, setCurQuanity] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
   const router = useNavigate()
   const { id } = useParams()
+
+  const fetchUser = async () => {
+    try {
+      const res = await getUserById(authenticatedAccount.id)
+      setUserInfo(res.data)
+      return Promise.resolve()
+    } catch (error) {
+      return Promise.reject({ 2: error })
+    }
+  }
 
   const fetchProduct = async () => {
     try {
@@ -56,13 +67,13 @@ const ProductInfo = () => {
     try {
       setIsLoading(true)
       const newProductInfo = { ...productInfo, quanity: curQuanity }
-      const index = authenticatedAccount.cart.findIndex((item) => item.id === newProductInfo.id)
+      const index = userInfo.cart.findIndex((item) => item.id === newProductInfo.id)
       if (index === -1) {
-        authenticatedAccount.cart.push(newProductInfo)
+        userInfo.cart.push(newProductInfo)
       } else {
-        authenticatedAccount.cart[index].quanity += curQuanity
+        userInfo.cart[index].quanity += curQuanity
       }
-      const newUser = { ...authenticatedAccount }
+      const newUser = { ...userInfo }
       const res = await updateUser(newUser)
       setIsLoading(false)
       return Promise.resolve()
@@ -75,9 +86,8 @@ const ProductInfo = () => {
   }
 
   useEffect(() => {
-    if (!productInfo) {
-      fetchProduct()
-    }
+    if (!productInfo) fetchProduct()
+    fetchUser()
   }, [])
 
   return (

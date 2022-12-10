@@ -2,11 +2,11 @@ import React from 'react'
 
 const ProductInfo = ({ productInfo }) => {
   return (
-    <div className='w-full flex justify-between items-center px-4'>
+    <div className='flex w-full items-center justify-between px-4'>
       <div className='flex items-center'>
         <img
           width='100'
-          className='border-2 rounded-sm object-contain'
+          className='rounded-sm border-2 object-contain'
           src={productInfo.productImage}
           alt={productInfo.name}
         />
@@ -18,7 +18,7 @@ const ProductInfo = ({ productInfo }) => {
       </div>
       <div>
         <p className='text-right'>{productInfo.price}</p>
-        <button className='button-primary px-8 py-2 font-bold mt-2'>Mua lại</button>
+        <button className='button-primary mt-2 px-8 py-2 font-bold'>Mua lại</button>
       </div>
     </div>
   )

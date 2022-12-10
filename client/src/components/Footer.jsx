@@ -5,14 +5,14 @@ import { FaFacebook, FaYoutube, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'r
 const Footer = () => {
   return (
     <div className='max-w-screen relative bottom-0 mt-8 overflow-x-hidden pt-1 sm:mx-8'>
-      <hr className='bg-primary mb-10 h-[1.5px]' />
+      <hr className='mb-10 h-[1.5px] bg-primary' />
       <div className='grid w-full grid-cols-3 sm:grid-cols-1'>
         <div className='flex items-center justify-center sm:mb-4'>
-          <div className='text-primary text-center font-sans text-5xl font-black lg:text-3xl'>FireTea.</div>
+          <div className='text-center font-sans text-5xl font-black text-primary lg:text-3xl'>FireTea.</div>
         </div>
         <div className='flex flex-col items-center sm:mb-4'>
           <div className='sm:flex sm:flex-col sm:items-center'>
-            <h4 className='text-primary text-xl font-semibold sm:ml-0 sm:text-xl lg:text-lg'>Địa chỉ liên hệ</h4>
+            <h4 className='text-xl font-semibold text-primary lg:text-lg sm:ml-0 sm:text-xl'>Địa chỉ liên hệ</h4>
             <div className='flex items-center pl-0'>
               <div className='sm:text-center'>5/15, đường 106, phường Tăng Nhơn Phú A, thành phố Thủ Đức</div>
             </div>
@@ -26,7 +26,7 @@ const Footer = () => {
         </div>
         <div className='ml-4 grid justify-center lg:grid-cols-1 lg:justify-start'>
           <div className='mb-2 flex flex-col items-start sm:mb-4 sm:items-center'>
-            <h4 className='text-primary text-left text-xl font-semibold lg:text-lg'>Chính sách</h4>
+            <h4 className='text-left text-xl font-semibold text-primary lg:text-lg'>Chính sách</h4>
             <ul className='pl-0'>
               <li>Hình thức thanh toán</li>
               <li>Vận chuyển giao nhận</li>
@@ -35,7 +35,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className='flex flex-col items-start sm:items-center'>
-            <h4 className='text-primary text-left text-xl lg:text-lg'>Liên hệ trực tiếp</h4>
+            <h4 className='text-left text-xl text-primary lg:text-lg'>Liên hệ trực tiếp</h4>
             <div className='flex justify-start'>
               <a target='_bank' href='https://www.facebook.com' className='mr-2 text-3xl'>
                 <FaFacebook className='hover:opacity-90 active:opacity-100' />
@@ -47,11 +47,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <hr className='bg-primary mt-10 h-[1.5px]' />
+      <hr className='mt-10 h-[1.5px] bg-primary' />
       <div className='mt-4 flex justify-center'>
         <Link
           to='about-us'
-          className='text-primary hover:border-primary text-2xl font-bold hover:border-b-2 active:text-[#4d8b54cc]'
+          className='text-2xl font-bold text-primary hover:border-b-2 hover:border-primary active:text-[#4d8b54cc]'
         >
           Về chúng tôi
         </Link>

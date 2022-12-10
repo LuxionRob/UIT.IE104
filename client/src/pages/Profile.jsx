@@ -72,18 +72,18 @@ const Profile = () => {
   }
 
   return (
-    <div className='px-64 xl:px-8 lg:px-4 sm:pt-4 sm:mt-28 grid grid-cols-3 sm:grid-cols-1 mb-16'>
-      <div className='flex flex-col items-center mb-8'>
-        <img width='300' className='object-contain rounded-full' src={user.avatarImage} alt='avatar' />
-        <span className='text-primary self-start font-bold text-2xl mt-8'>{user.name}</span>
+    <div className='mb-16 grid grid-cols-3 px-64 xl:px-8 lg:px-4 sm:mt-28 sm:grid-cols-1 sm:pt-4'>
+      <div className='mb-8 flex flex-col items-center'>
+        <img width='300' className='rounded-full object-contain' src={user.avatarImage} alt='avatar' />
+        <span className='mt-8 self-start text-2xl font-bold text-primary'>{user.name}</span>
         <div className='w-full'>
           {isUpdating ? (
             <form>
-              <div className='flex flex-col mt-2'>
+              <div className='mt-2 flex flex-col'>
                 <label htmlFor='name'>Tên</label>
                 <input ref={nameRef} className='input rounded-md' name='name' id='name' type='text' placeholder='Tên' />
               </div>
-              <div className='flex flex-col mt-2'>
+              <div className='mt-2 flex flex-col'>
                 <label htmlFor='address'>Địa chỉ</label>
                 <input
                   ref={addressRef}
@@ -94,7 +94,7 @@ const Profile = () => {
                   placeholder='Địa chỉ'
                 />
               </div>
-              <div className='flex flex-col mt-2'>
+              <div className='mt-2 flex flex-col'>
                 <label htmlFor='phone-number'>Số điện thoại</label>
                 <input
                   ref={phoneNumberRef}
@@ -108,17 +108,17 @@ const Profile = () => {
               <button className='button-primary px-8' onClick={onSubmit}>
                 Save
               </button>
-              <button className='button px-4 ml-1' onClick={onCancel}>
+              <button className='button ml-1 px-4' onClick={onCancel}>
                 Cancel
               </button>
             </form>
           ) : (
-            <button onClick={toggleEditProfile} className='button w-full py-2 mt-4'>
+            <button onClick={toggleEditProfile} className='button mt-4 w-full py-2'>
               Sửa thông tin
             </button>
           )}
           {user.role === 'admin' && (
-            <Link to='/admin' className='button w-full inline-block text-center py-2 mt-4'>
+            <Link to='/admin' className='button mt-4 inline-block w-full py-2 text-center'>
               Xem thống kê
             </Link>
           )}
@@ -126,7 +126,7 @@ const Profile = () => {
         <hr className='my-4 w-full' />
         {isUpdating || (
           <div className='self-start'>
-            <span className='text-black font-bold text-xl mt-8'>Thông tin cá nhân</span>
+            <span className='mt-8 text-xl font-bold text-black'>Thông tin cá nhân</span>
             <ul>
               <li>Giới tính: {user.gender}</li>
               <li>Địa chỉ: {user.address}</li>
@@ -135,27 +135,27 @@ const Profile = () => {
           </div>
         )}
       </div>
-      <div className='ml-16 sm:ml-0 border-2 border-slate-200 bg-opacity-50 rounded-md flex flex-col col-span-2'>
+      <div className='col-span-2 ml-16 flex flex-col rounded-md border-2 border-slate-200 bg-opacity-50 sm:ml-0'>
         <h1 className='w-full py-4 text-center font-extrabold'>Lịch sử mua hàng</h1>
         <hr />
         <div className='my-4'>
           {user.history && user.history.map((product) => <ProductInfo key={product.id} productInfo={product} />)}
         </div>
         {user.history && user.history?.length === 0 && (
-          <div className='flex justify-center items-center grow flex-col'>
+          <div className='flex grow flex-col items-center justify-center'>
             <span>Hiện không có sản phẩm nào</span>
-            <Link className='button-primary px-8 py-2 mt-4' to='/products'>
+            <Link className='button-primary mt-4 px-8 py-2' to='/products'>
               Đi tới mua sắm
             </Link>
           </div>
         )}
       </div>
       {popUp && (
-        <div className='fixed inset-0 bg-opacity-10 bg-black flex justify-center items-center'>
-          <div className='bg-slate-100 w-3/10 h-3/10 border-2 shawdow-md flex flex-col items-center justify-center py-8 rounded-xl relative'>
-            <h1 className='text-center font-bold text-xl'>Bạn có muốn hủy thay đổi không?</h1>
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-10'>
+          <div className='shawdow-md relative flex h-3/10 w-3/10 flex-col items-center justify-center rounded-xl border-2 bg-slate-100 py-8'>
+            <h1 className='text-center text-xl font-bold'>Bạn có muốn hủy thay đổi không?</h1>
             <section className='mt-2'>Những thay đổi của bạn sẽ bị xóa!</section>
-            <div className='flex justify-evenly w-full'>
+            <div className='flex w-full justify-evenly'>
               <button
                 onClick={() => {
                   setPopUp(false)
@@ -178,7 +178,7 @@ const Profile = () => {
               onClick={() => {
                 setPopUp(false)
               }}
-              className='absolute top-4 right-4 text-3xl hover:text-primary leading-none'
+              className='absolute top-4 right-4 text-3xl leading-none hover:text-primary'
             >
               <AiOutlineClose />
             </button>

@@ -26,7 +26,7 @@ const Home = () => {
   }
 
   return (
-    <div className='max-w-screen mx-64 mb-10 sm:mt-32 lg:mx-4 xl:mx-8'>
+    <div className='max-w-screen mx-64 mb-10 xl:mx-8 lg:mx-4 sm:mt-32'>
       {/* Banner */}
       <Banner imgSrc={'http://localhost:3003/api/images/banners/1'} />
 

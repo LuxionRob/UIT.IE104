@@ -69,7 +69,7 @@ const Products = () => {
 
   return (
     <>
-      <div className='max-w-screen mx-64 mt-10 sm:mt-32 lg:mx-4 xl:mx-8'>
+      <div className='max-w-screen mx-64 mt-10 xl:mx-8 lg:mx-4 sm:mt-32'>
         <div className='mb-6 flex justify-between'>
           <h1 className='text-2xl'>Sản phẩm</h1>
           <Select className='w-28' defaultValue={'Chọn loại'} onChange={onChangeFilter}>

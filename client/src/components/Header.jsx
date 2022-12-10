@@ -3,6 +3,8 @@ import { NavLink, Link } from 'react-router-dom'
 import { ImMenu } from 'react-icons/im'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { AuthContext } from './Auth'
+import { imageWidthResponsive } from '../utils'
+
 const nav = [
   { name: 'Trang chủ', path: '/' },
   { name: 'Sản phẩm', path: '/products' },
@@ -43,15 +45,15 @@ const Header = () => {
   }
 
   return (
-    <div className='z-10 h-fit bg-white px-64 sm:fixed sm:top-0 sm:left-0 sm:right-0 sm:pt-4 sm:shadow-sm lg:px-4 xl:px-8'>
+    <div className='z-10 h-fit bg-white px-64 xl:px-8 lg:px-4 sm:fixed sm:top-0 sm:left-0 sm:right-0 sm:pt-4 sm:shadow-sm'>
       <div className='relative flex w-full justify-between'>
         <NavLink
           to='/'
-          className='text-primary flex items-center justify-center font-sans text-2xl font-bold sm:text-xl'
+          className='flex items-center justify-center font-sans text-2xl font-bold text-primary sm:text-xl'
         >
           FireTea.
         </NavLink>
-        <ul className='ml-12 flex grow basis-1/2 sm:hidden lg:m-0 xl:grow-0 xl:basis-1/3'>
+        <ul className='ml-12 flex grow basis-1/2 xl:grow-0 xl:basis-1/3 lg:m-0 sm:hidden'>
           {nav.map((item) => {
             return (
               <NavLink key={item.name} to={item.path} className='navbar-item responsive sm:leading-normal'>
@@ -63,7 +65,7 @@ const Header = () => {
 
         <div className='flex basis-2/5 items-center justify-end xl:grow'>
           <input
-            className='input border-primary shadow-primary h-9 rounded-full border-2 border-solid pl-4 shadow-md sm:hidden'
+            className='input h-9 rounded-full border-2 border-solid border-primary pl-4 shadow-md shadow-primary sm:hidden'
             type='text'
             placeholder='Bạn muốn uống gì...'
           />
@@ -77,7 +79,7 @@ const Header = () => {
                   setAvatarIsDropdownShow((isAvatarDropdownShow) => !isAvatarDropdownShow)
                 }}
                 width={imageWidthResponsive('avatar')}
-                className='h-[65px] w-[65px] cursor-pointer rounded-full bg-gray-300 object-contain sm:h-[45px] sm:w-[45px] lg:h-[55px] lg:w-[55px]'
+                className='h-[65px] w-[65px] cursor-pointer rounded-full bg-gray-300 object-contain lg:h-[55px] lg:w-[55px] sm:h-[45px] sm:w-[45px]'
                 src={authenticatedAccount.avatarImage}
                 alt={authenticatedAccount.name}
               />
@@ -129,7 +131,7 @@ const Header = () => {
           ) : (
             <Link
               to='/login'
-              className='bg-primary ml-8 whitespace-nowrap rounded-lg py-2 px-4 text-white sm:px-2 sm:py-1 sm:text-sm'
+              className='ml-8 whitespace-nowrap rounded-lg bg-primary py-2 px-4 text-white sm:px-2 sm:py-1 sm:text-sm'
             >
               Đăng nhập
             </Link>
@@ -144,7 +146,7 @@ const Header = () => {
       />
       <ul className='hidden flex-col justify-center sm:flex' id='navbar'>
         <div className='flex items-center justify-between'>
-          <NavLink to='/' className='text-primary inline-block h-8 w-full font-semibold leading-loose'>
+          <NavLink to='/' className='inline-block h-8 w-full font-semibold leading-loose text-primary'>
             Trang chủ
           </NavLink>
           <div className='mr-2 flex h-8 w-8 items-center justify-center' onClick={onMobileClick}>
@@ -153,7 +155,7 @@ const Header = () => {
         </div>
         <NavLink
           to='/products'
-          className='dropdown text-primary h-0 w-full font-semibold leading-loose opacity-0 transition-all delay-200 ease-linear'
+          className='dropdown h-0 w-full font-semibold leading-loose text-primary opacity-0 transition-all delay-200 ease-linear'
           onClick={cancelNavbar}
         >
           Sản phẩm

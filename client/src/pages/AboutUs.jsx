@@ -1,14 +1,24 @@
 const AboutUs = () => {
   const members = [
     { name: 'Tri Bùi', link: 'https://www.facebook.com/LuxionRob' },
-    { name: 'Ánh Nguyệt', link: 'https://www.facebook.com/profile.php?id=100034575011574' },
+    {
+      name: 'Ánh Nguyệt',
+      link: 'https://www.facebook.com/profile.php?id=100034575011574',
+    },
     { name: 'Khánh Châu', link: 'https://www.facebook.com/bunbe.bong.378/' },
-    { name: 'Thanh Nhàn', class: 'object-top', link: 'https://www.facebook.com/NguyenThanhNhan78104' },
-    { name: 'Đức Luận', link: 'https://www.facebook.com/profile.php?id=100044166517726' },
+    {
+      name: 'Thanh Nhàn',
+      class: 'object-top',
+      link: 'https://www.facebook.com/NguyenThanhNhan78104',
+    },
+    {
+      name: 'Đức Luận',
+      link: 'https://www.facebook.com/profile.php?id=100044166517726',
+    },
   ]
 
   return (
-    <div className='max-w-screen mx-64 mb-10 sm:mt-32 lg:mx-4 xl:mx-8'>
+    <div className='max-w-screen mx-64 mb-10 xl:mx-8 lg:mx-4 sm:mt-32'>
       <h1 className='mb-8 text-center text-4xl text-green-500'>Thành viên</h1>
       <div className='flex flex-wrap justify-around'>
         {members.map((member, index) => {

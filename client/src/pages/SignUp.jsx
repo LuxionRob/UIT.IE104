@@ -59,7 +59,10 @@ const SignUp = () => {
       setError(errors)
     } else {
       try {
-        const signUpRes = await signUp({ email: curEmail, password: curPassword })
+        const signUpRes = await signUp({
+          email: curEmail,
+          password: curPassword,
+        })
         const userInfo = {
           ...signUpRes.data,
           adderss: '',
@@ -94,9 +97,9 @@ const SignUp = () => {
   }
   return (
     <div className='max-w-screen flex h-screen items-center justify-center'>
-      <div className='w-3/10 xl:w-9/10 flex flex-col items-center justify-center rounded-lg border border-gray-400 px-16 py-8 shadow-md sm:px-4'>
+      <div className='flex w-3/10 flex-col items-center justify-center rounded-lg border border-gray-400 px-16 py-8 shadow-md xl:w-9/10 sm:px-4'>
         <div>
-          <div className='text-primary flex items-center justify-center font-sans text-3xl font-bold'>FireTea.</div>
+          <div className='flex items-center justify-center font-sans text-3xl font-bold text-primary'>FireTea.</div>
           <h1 className='mt-2 mb-8 text-center text-2xl'>Đăng ký</h1>
         </div>
         <input
@@ -140,8 +143,8 @@ const SignUp = () => {
           >
             Tạo tài khoản
           </button>
-          <hr className='bg-primary w-5/10 mt-8 h-[2px]' />
-          <span className='text-primary mt-2 font-bold'>Bạn đã có tài khoản rồi?</span>
+          <hr className='mt-8 h-[2px] w-5/10 bg-primary' />
+          <span className='mt-2 font-bold text-primary'>Bạn đã có tài khoản rồi?</span>
           <Link to='/login' className='button mt-2 px-4 py-2'>
             Đăng nhập
           </Link>

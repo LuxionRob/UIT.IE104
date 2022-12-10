@@ -18,7 +18,7 @@ export const imageWidthResponsive = (type) => {
     if (portWidth > 1023) {
       return 65
     }
-    if (portWidth > 639) {
+    if (portWidth <= 1023) {
       return 55
     }
     if (portWidth <= 639) {
@@ -28,7 +28,7 @@ export const imageWidthResponsive = (type) => {
     if (portWidth > 1023) {
       return 300
     }
-    if (portWidth > 639) {
+    if (portWidth <= 1023) {
       return 200
     }
     if (portWidth <= 639) {

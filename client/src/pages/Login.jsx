@@ -46,10 +46,12 @@ const Login = () => {
       setError(errors)
     } else {
       try {
-        const resLogin = await login({ email: curEmail, password: curPassword })
-        navigate('/')
+        const resLogin = await login({
+          email: curEmail,
+          password: curPassword,
+        })
+        router('/')
       } catch (res) {
-        console.log(res)
         if (res.response.data?.email) {
           errors.email = res.response.data?.email
           setError(errors)
@@ -67,9 +69,9 @@ const Login = () => {
   }
   return (
     <div className='max-w-screen flex h-screen items-center justify-center'>
-      <div className='w-3/10 xl:w-7/10 lg:w-9/10 flex flex-col items-center justify-center rounded-lg border border-gray-400 px-16 py-8 shadow-md sm:px-4'>
+      <div className='flex w-3/10 flex-col items-center justify-center rounded-lg border border-gray-400 px-16 py-8 shadow-md xl:w-7/10 lg:w-9/10 sm:px-4'>
         <div>
-          <div className='text-primary flex items-center justify-center font-sans text-3xl font-bold'>FireTea.</div>
+          <div className='flex items-center justify-center font-sans text-3xl font-bold text-primary'>FireTea.</div>
           <h1 className='mt-2 mb-8 text-center text-2xl'>Đăng nhập</h1>
         </div>
         <input

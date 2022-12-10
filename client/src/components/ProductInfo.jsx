@@ -1,8 +1,9 @@
 import React from 'react'
+import { transformToVNCurrency } from '../utils'
 
 const ProductInfo = ({ productInfo }) => {
   return (
-    <div className='flex w-full items-center justify-between px-4'>
+    <div className='my-2 flex w-full items-center justify-between px-4'>
       <div className='flex items-center'>
         <img
           width='100'
@@ -17,7 +18,7 @@ const ProductInfo = ({ productInfo }) => {
         </div>
       </div>
       <div>
-        <p className='text-right'>{productInfo.price}</p>
+        <p className='text-right'>{transformToVNCurrency(productInfo.price)}</p>
         <button className='button-primary mt-2 px-8 py-2 font-bold'>Mua lại</button>
       </div>
     </div>

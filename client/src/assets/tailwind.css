@@ -10,16 +10,28 @@
 
 @layer components {
   .navbar-item {
-    @apply text-primary ml-6 px-6 leading-[6rem] whitespace-nowrap w-fit text-lg;
+    @apply text-primary ml-6 px-6  leading-[6rem] whitespace-nowrap w-fit text-lg lg:px-2 lg:ml-2;
   }
   .navbar-item:hover {
     @apply text-white bg-primary;
   }
   .navbar-item.active {
-    @apply relative;
+    @apply relative sm:text-primary sm:bg-none;
   }
   .navbar-item.active::after {
     content: '';
     @apply absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-5 h-1 w-16  bg-primary rounded-xl;
+  }
+  .responsive .dropdown {
+    @apply inline-block opacity-100 h-8;
+  }
+  #search-input.search {
+    @apply w-full my-4 opacity-100 h-9 rounded-full grow border-2 border-solid border-primary shadow-primary shadow-md;
+  }
+}
+
+@layer utilities {
+  .navbar-item.responsive {
+    @apply text-primary bg-white;
   }
 }

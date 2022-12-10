@@ -20,12 +20,12 @@ function generateProductList() {
 
 function generateOrderedList() {
   orderedList.map((product) => {
-    product.ordered = Array(30)
+    product.ordered = Array(10000)
       .fill(0)
       .map((_) => {
         return {
-          orderedAt: faker.date.past(1),
-          quanity: Math.floor(Math.random() * 10),
+          orderedAt: faker.date.past(3),
+          quanity: Math.floor(Math.random() * 20),
         }
       })
   })

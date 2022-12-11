@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const { faker } = require('@faker-js/faker')
 const userList = require('./data/users')
 const productList = require('./data/products')
@@ -42,7 +43,7 @@ function start() {
     ordered,
   }
 
-  fs.writeFile(path.join(__dirname, '/tmp/db.json'), JSON.stringify(db), () => {
+  fs.writeFile(path.join(__dirname, 'tmp/db.json'), JSON.stringify(db), () => {
     console.log('Generate data successfully =))')
   })
 }

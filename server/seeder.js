@@ -1,5 +1,4 @@
 const fs = require('fs')
-const path = require('path')
 const { faker } = require('@faker-js/faker')
 const userList = require('./data/users')
 const productList = require('./data/products')
@@ -21,7 +20,7 @@ function generateProductList() {
 
 function generateOrderedList() {
   orderedList.map((product) => {
-    product.ordered = Array(1000)
+    product.ordered = Array(10)
       .fill(0)
       .map((_) => {
         return {

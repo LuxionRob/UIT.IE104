@@ -15,36 +15,39 @@ import NoPage from './pages/NoPage'
 import Admin from './pages/Admin'
 import PrivateRoute from './components/PrivateRoute'
 import Auth from './components/Auth'
+import Search from './components/Search'
 import './tailwind.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Auth>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path='/sign-up' element={<SignUp />} />
-          <Route path='/' element={<DefaultLayout />}>
-            <Route index element={<Home />} />
-            <Route path='/products' element={<Products />} />
-            <Route path='/about-us' element={<AboutUs />} />
-            <Route path='' element={<PrivateRoute />}>
-              <Route path='/payment' element={<Payment />} />
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/products/:id' element={<ProductInfo />} />
+      <Search>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/login' element={<Login />} />
+            <Route path='/sign-up' element={<SignUp />} />
+            <Route path='/' element={<DefaultLayout />}>
+              <Route index element={<Home />} />
+              <Route path='/products' element={<Products />} />
+              <Route path='/about-us' element={<AboutUs />} />
+              <Route path='' element={<PrivateRoute />}>
+                <Route path='/payment' element={<Payment />} />
+                <Route path='/profile' element={<Profile />} />
+                <Route path='/products/:id' element={<ProductInfo />} />
+              </Route>
             </Route>
-          </Route>
-          <Route path='/admin' element={<PrivateRoute />}>
-            <Route path='' element={<NoFooter />}>
-              <Route path='' element={<Admin />} />
+            <Route path='/admin' element={<PrivateRoute />}>
+              <Route path='' element={<NoFooter />}>
+                <Route path='' element={<Admin />} />
+              </Route>
             </Route>
-          </Route>
-          <Route path='/404' element={<NoFooter />}>
-            <Route path='' element={<NoPage />} />
-          </Route>
-          <Route path='*' element={<Navigate to='/404' />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path='/404' element={<NoFooter />}>
+              <Route path='' element={<NoPage />} />
+            </Route>
+            <Route path='*' element={<Navigate to='/404' />} />
+          </Routes>
+        </BrowserRouter>
+      </Search>
     </Auth>
   </React.StrictMode>
 )

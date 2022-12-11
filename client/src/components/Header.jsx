@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import { ImMenu } from 'react-icons/im'
 import { AiOutlineClose } from 'react-icons/ai'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { AuthContext } from './Auth'
+import { SearchContext } from './Search'
 import { imageWidthResponsive } from '../utils'
 
 const nav = [
@@ -13,18 +14,38 @@ const nav = [
 
 const Header = () => {
   const { authenticatedAccount, signOut } = useContext(AuthContext)
+  const { searchValue, setSearchValue } = useContext(SearchContext)
+  const [curSearch, setCurSearch] = useState('')
   const [isAvatarDropdownShow, setAvatarIsDropdownShow] = useState(false)
   const [isPopup, setIsPopUp] = useState(false)
   const ref = useRef(null)
+  const router = useNavigate()
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (!ref?.current?.contains(event.target)) {
-        setAvatarIsDropdownShow(false)
-      }
+  const handleClickOutside = (event) => {
+    if (!ref?.current?.contains(event.target)) {
+      setAvatarIsDropdownShow(false)
     }
-    document.addEventListener('mousedown', handleClickOutside)
-  }, [ref])
+  }
+
+  const onSearchFuntion = (e) => {
+    if (e.key === 'Enter') {
+      setSearchValue(e.target.value)
+      router('/products')
+    }
+  }
+  const handleEvent = () => {
+    const searchInput = document.querySelectorAll('.header-search')
+    searchInput.forEach((element) => {
+      element.addEventListener('keypress', onSearchFuntion)
+    })
+  }
+
+  const removeEvent = () => {
+    const searchInput = document.querySelectorAll('.header-search')
+    searchInput.forEach((element) => {
+      element.removeEventListener('keypress', onSearchFuntion)
+    })
+  }
 
   const onClickLogOut = () => {
     setIsPopUp(true)
@@ -45,6 +66,21 @@ const Header = () => {
     const searchInput = document.getElementById('search-input')
     searchInput.classList.toggle('search')
   }
+
+  const onSearchChange = (e) => {
+    console.log(curSearch)
+    setCurSearch(e.target.value)
+  }
+
+  useEffect(() => {
+    handleEvent()
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      removeEvent()
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [ref])
 
   return (
     <div className='z-10 h-fit bg-white px-64 xl:px-8 lg:px-4 sm:fixed sm:top-0 sm:left-0 sm:right-0 sm:pt-4 sm:shadow-sm'>
@@ -67,9 +103,11 @@ const Header = () => {
 
         <div className='flex basis-2/5 items-center justify-end xl:grow'>
           <input
-            className='input h-9 rounded-full border-2 border-solid border-primary pl-4 shadow-md shadow-primary sm:hidden'
-            type='text'
+            className='header-search input h-9 rounded-full border-2 border-solid border-primary pl-4 shadow-md shadow-primary sm:hidden'
+            type='search'
             placeholder='Bạn muốn uống gì...'
+            value={curSearch}
+            onChange={onSearchChange}
           />
           <div className='hidden sm:block' onClick={handleClickOnSearch}>
             <AiOutlineSearch />
@@ -142,9 +180,11 @@ const Header = () => {
       </div>
       <input
         id='search-input'
-        className='m-0 h-0 w-full p-0 pl-4 opacity-0 transition-all delay-200 ease-linear'
-        type='text'
+        className='header-search m-0 h-0 w-full p-0 pl-4 opacity-0 transition-all delay-200 ease-linear'
+        type='search'
         placeholder='Bạn muốn uống gì...'
+        value={curSearch}
+        onChange={onSearchChange}
       />
       <ul className='hidden flex-col justify-center sm:flex' id='navbar'>
         <div className='flex items-center justify-between'>

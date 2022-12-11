@@ -2,10 +2,10 @@ const jsonServer = require('json-server')
 const server = jsonServer.create()
 const middlewares = jsonServer.defaults()
 const routes = require('./routes/index.route')
-require('dotenv').config()
 
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares)
+server.use(express.static('public'))
 
 // Add custom routes before JSON Server router
 

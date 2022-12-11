@@ -1,6 +1,6 @@
 const queryString = require('query-string')
 const jsonServer = require('json-server')
-const router = jsonServer.router('db.json')
+const router = jsonServer.router('../tmp/db.json')
 const imagesRouter = require('./image.route')
 const authRouter = require('./auth.route')
 const path = require('path')

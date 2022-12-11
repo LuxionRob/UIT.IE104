@@ -12,7 +12,7 @@
     "seed-watch": "nodemon seeder.js",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "npm run seed && cd ../client && npm run build && mv build ../server/public && cd ../server"
+    "build": "npm run seed"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

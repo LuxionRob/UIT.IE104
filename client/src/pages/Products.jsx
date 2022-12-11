@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Pagination, Select } from 'antd'
+import { BsTrash2 } from 'react-icons/bs'
 import Loading from '../components/Loading'
 import { SearchContext } from '../components/Search'
 import { getPagedProduct } from '../api/product'
@@ -76,10 +77,10 @@ const Products = () => {
 
   return (
     <>
-      <div className='max-w-screen mx-64 mt-10 xl:mx-8 lg:mx-4 sm:mt-32'>
+      <div className='max-w-screen mx-64 mt-10 flex grow flex-col xl:mx-8 lg:mx-4 sm:mt-32'>
         <div className='mb-6 flex justify-between'>
           <h1 className='text-2xl'>Sản phẩm</h1>
-          <Select className='w-28' defaultValue={'Chọn loại'} onChange={onChangeFilter}>
+          <Select className='w-28' defaultValue={'Tất cả'} onChange={onChangeFilter}>
             {typeOfProduct.map((type, index) => {
               return (
                 <Option key={index} value={type}>
@@ -89,17 +90,20 @@ const Products = () => {
             })}
           </Select>
         </div>
-        {isLoading ? (
-          <Loading />
-        ) : (
+        {products && products.length > 0 ? (
           <div className='grid w-full grid-cols-4 gap-6 sm:grid-cols-2'>
             {products.map((product, index) => {
               return <ProductCard key={index} product={product} isLoading={isLoading} />
             })}
           </div>
+        ) : (
+          <div className='flex h-full grow flex-col items-center justify-center'>
+            <BsTrash2 className='h-[5%] w-[5%] sm:h-1/10 sm:w-1/10' />
+            <h2 className='text-xl font-bold opacity-80 lg:text-lg sm:text-sm'>Không có dữ liệu!</h2>
+          </div>
         )}
       </div>
-      {totalProduct && (
+      {totalProduct > 0 && (
         <Pagination
           current={paginationPage}
           className='mx-auto mt-4 mb-10'
@@ -109,6 +113,7 @@ const Products = () => {
           showSizeChanger={false}
         />
       )}
+      {isLoading && <Loading />}
     </>
   )
 }

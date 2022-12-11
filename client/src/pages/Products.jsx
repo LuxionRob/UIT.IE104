@@ -98,8 +98,8 @@ const Products = () => {
           </div>
         ) : (
           <div className='flex h-full grow flex-col items-center justify-center'>
-            <BsTrash2 className='h-[5%] w-[5%]' />
-            <h2 className='text-xl font-bold'>Không có dữ liệu!</h2>
+            <BsTrash2 className='h-[5%] w-[5%] sm:h-1/10 sm:w-1/10' />
+            <h2 className='text-xl font-bold opacity-80 lg:text-lg sm:text-sm'>Không có dữ liệu!</h2>
           </div>
         )}
       </div>

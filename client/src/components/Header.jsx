@@ -82,7 +82,7 @@ const Header = () => {
   }, [ref])
 
   return (
-    <div className='z-10 h-fit bg-white px-64 xl:px-8 lg:px-4 sm:fixed sm:top-0 sm:left-0 sm:right-0 sm:pt-4 sm:shadow-sm'>
+    <div className='z-[9999] h-fit bg-white px-64 xl:px-8 lg:px-4 sm:fixed sm:top-0 sm:left-0 sm:right-0 sm:pt-4 sm:shadow-sm'>
       <div className='relative flex w-full justify-between'>
         <NavLink
           to='/'

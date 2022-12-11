@@ -68,7 +68,6 @@ const Header = () => {
   }
 
   const onSearchChange = (e) => {
-    console.log(curSearch)
     setCurSearch(e.target.value)
   }
 

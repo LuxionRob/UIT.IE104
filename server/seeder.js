@@ -20,7 +20,7 @@ function generateProductList() {
 
 function generateOrderedList() {
   orderedList.map((product) => {
-    product.ordered = Array(10000)
+    product.ordered = Array(1000)
       .fill(0)
       .map((_) => {
         return {

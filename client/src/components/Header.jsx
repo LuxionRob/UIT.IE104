@@ -53,7 +53,7 @@ const Header = () => {
           to='/'
           className='flex items-center justify-center font-sans text-2xl font-bold text-primary sm:text-xl'
         >
-          FireTea.
+          FiveTea.
         </NavLink>
         <ul className='ml-12 flex grow basis-1/2 xl:grow-0 xl:basis-1/3 lg:m-0 sm:hidden'>
           {nav.map((item) => {

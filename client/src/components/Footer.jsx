@@ -8,7 +8,7 @@ const Footer = () => {
       <hr className='mb-10 h-[1.5px] bg-primary' />
       <div className='grid w-full grid-cols-3 sm:grid-cols-1'>
         <div className='flex items-center justify-center sm:mb-4'>
-          <div className='text-center font-sans text-5xl font-black text-primary lg:text-3xl'>FireTea.</div>
+          <div className='text-center font-sans text-5xl font-black text-primary lg:text-3xl'>FiveTea.</div>
         </div>
         <div className='flex flex-col items-center sm:mb-4'>
           <div className='sm:flex sm:flex-col sm:items-center'>

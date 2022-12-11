@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
+import Loading from '../components/Loading'
 import { AuthContext } from '../components/Auth'
 import ProductInfo from '../components/ProductInfo'
 import { getUserById, updateUser } from '../api/user'

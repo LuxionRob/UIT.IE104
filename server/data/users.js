@@ -1,5 +1,3 @@
-const PORT = process.env.PORT || 3003
-
 module.exports = [
   {
     id: 1,
@@ -8,7 +6,7 @@ module.exports = [
     phoneNumber: '0777777777',
     gender: 'Nữ',
     email: 'nikalinhlan@nijigen.com',
-    avatarImage: `http://localhost:${PORT}/api/images/users/1`,
+    avatarImage: `/api/images/users/1`,
     password: '123456789',
     role: 'admin',
     cart: [],
@@ -21,7 +19,7 @@ module.exports = [
     phoneNumber: '0888888888',
     gender: 'Nữ',
     email: 'whalewolfwolf@whale52hz.com',
-    avatarImage: `http://localhost:${PORT}/api/images/users/2`,
+    avatarImage: `/api/images/users/2`,
     password: '123456789',
     role: 'user',
     cart: [],
@@ -34,7 +32,7 @@ module.exports = [
     phoneNumber: '0999999999',
     gender: 'Nam',
     email: 'ducacuca@cockroache.com',
-    avatarImage: `http://localhost:${PORT}/api/images/users/3`,
+    avatarImage: `/api/images/users/3`,
     password: '123456789',
     role: 'user',
     cart: [],

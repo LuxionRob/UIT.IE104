@@ -3,7 +3,7 @@ const jsonServer = require('json-server')
 const imagesRouter = require('./image.route')
 const authRouter = require('./auth.route')
 const path = require('path')
-const router = jsonServer.router(path.join(__dirname, '../tmp/db.json'))
+const router = jsonServer.router('db.json')
 
 function routes(server) {
   router.render = (req, res) => {

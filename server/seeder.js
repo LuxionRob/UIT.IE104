@@ -42,7 +42,7 @@ function start() {
     ordered,
   }
 
-  fs.writeFile('db.json', JSON.stringify(db), () => {
+  fs.writeFile(path.join(__dirname, '/tmp/db.json'), JSON.stringify(db), () => {
     console.log('Generate data successfully =))')
   })
 }

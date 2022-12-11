@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { Pagination, Select } from 'antd'
 import Loading from '../components/Loading'
+import { SearchContext } from '../components/Search'
 import { getPagedProduct } from '../api/product'
 import ProductCard from '../components/ProductCard'
 
-const typeOfProduct = ['Trà sữa', 'Trà', 'Sữa chua', 'Cà phê', 'Sữa']
+const typeOfProduct = ['Tất cả', 'Trà sữa', 'Trà', 'Sữa chua', 'Cà phê', 'Sữa']
 const { Option } = Select
 
 const Products = () => {
+  const { searchValue } = useContext(SearchContext)
   const [products, setProducts] = useState([])
   const [paginationPage, setPaginationPage] = useState([1])
   const [totalProduct, setTotalProduct] = useState()
@@ -20,6 +22,7 @@ const Products = () => {
       const productList = await getPagedProduct({
         _page: paginationPage,
         _limit: '12',
+        q: searchValue,
       })
       setIsLoading(false)
       setTotalProduct(productList.data.pagination._totalRows)
@@ -35,11 +38,15 @@ const Products = () => {
   const fetchFilterProduct = async () => {
     try {
       setIsLoading(true)
-      const productList = await getPagedProduct({
+      const params = {
         _page: paginationPage,
         _limit: '12',
-        type: filterType,
-      })
+        q: searchValue,
+      }
+      if (filterType !== 'Tất cả') {
+        params.type = filterType
+      }
+      const productList = await getPagedProduct(params)
       setIsLoading(false)
       setTotalProduct(productList.data.pagination._totalRows)
       setProducts(productList.data.data)
@@ -65,7 +72,7 @@ const Products = () => {
 
   useEffect(() => {
     filterType ? fetchFilterProduct() : fetchProductData()
-  }, [paginationPage, filterType])
+  }, [paginationPage, filterType, searchValue])
 
   return (
     <>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Select, DatePicker } from 'antd'
 import dayjs from 'dayjs'
 import { AreaChart, YAxis, XAxis, Tooltip, Area } from 'recharts'
@@ -12,7 +11,6 @@ const Admin = () => {
   const [time, setTime] = useState({ year: 2022, month: 1 })
   const [timeLine, setTimeLine] = useState({})
   const [isLoading, setisLoading] = useState(false)
-  const router = useNavigate()
   const { Option } = Select
 
   const calculateIncomeYear = ({ id, type, name, price, rate, ordered }, { year, month }) => {
@@ -59,9 +57,9 @@ const Admin = () => {
     try {
       setisLoading(true)
       const res = await getAllOrder()
-      setOrdered(res)
-      setProductInfo(res[0])
-      setTimeLine(calculateIncomeYear(res[0], time))
+      setOrdered(res.data)
+      setProductInfo(res.data[0])
+      setTimeLine(calculateIncomeYear(res.data[0], time))
       setisLoading(false)
     } catch (error) {
       console.warn(error)
@@ -117,7 +115,7 @@ const Admin = () => {
             <Tooltip />
           </AreaChart>
           <h1 className='text-2xl font-bold text-primary'>
-            Doanh thu {productInfo.name} trong tháng {time.month}, năm {time.year}
+            Doanh thu {productInfo && productInfo.name} trong tháng {time && time.month}, năm {time && time.year}
           </h1>
         </div>
       </div>

@@ -1,9 +1,9 @@
 const queryString = require('query-string')
 const jsonServer = require('json-server')
-const router = jsonServer.router('db.json')
 const imagesRouter = require('./image.route')
 const authRouter = require('./auth.route')
 const path = require('path')
+const router = jsonServer.router('db.json')
 
 function routes(server) {
   router.render = (req, res) => {

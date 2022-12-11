@@ -1,8 +1,8 @@
 const jsonServer = require('json-server')
+const express = require('express')
 const server = jsonServer.create()
 const middlewares = jsonServer.defaults()
 const routes = require('./routes/index.route')
-require('dotenv').config()
 
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares)
@@ -22,7 +22,9 @@ server.use(
 
 // Use default router
 routes(server)
-const PORT = 3003
+const PORT = process.env.PORT || 3003
 server.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`)
 })
+
+module.exports = server

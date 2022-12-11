@@ -6,7 +6,6 @@ const routes = require('./routes/index.route')
 
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares)
-server.use(express.static('tmp'))
 
 // Add custom routes before JSON Server router
 
